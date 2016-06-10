@@ -1,0 +1,30 @@
+perfil:
+    path:     /
+    defaults: { _controller: "AreasBundle:Perfil:index" }
+
+perfil_show:
+    path:     /{id}/show
+    defaults: { _controller: "AreasBundle:Perfil:show" }
+
+perfil_new:
+    path:     /new
+    defaults: { _controller: "AreasBundle:Perfil:new" }
+
+perfil_create:
+    path:     /create
+    defaults: { _controller: "AreasBundle:Perfil:create" }
+    methods:  POST
+
+perfil_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AreasBundle:Perfil:edit" }
+
+perfil_update:
+    path:     /{id}/update
+    defaults: { _controller: "AreasBundle:Perfil:update" }
+    methods:  [POST, PUT]
+
+perfil_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AreasBundle:Perfil:delete" }
+    methods:  [POST, DELETE]

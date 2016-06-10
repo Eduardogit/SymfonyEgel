@@ -1,0 +1,41 @@
+{% extends '::baseAdmin.html.twig' %}
+{% block topJavascripts %}
+{{parent()}}
+<script src="{{asset('public/bootstrap/js/bootstrap.js')}}"></script>
+<script src="{{asset('public/js/calendar.js')}}"></script>
+<script src="{{asset('public/js/calendar-en.js')}}"></script>
+{% endblock %}
+
+{% block stylesheets %}
+{{ parent()}}
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{asset('public/css/calendar.css')}}">
+{% endblock %}
+
+{% block content %}
+  <section class="content">
+   <div class="container-fluid">
+    <h1>Usuario edit</h1>
+
+	{{form_start(edit_form)}}
+	{{form_end(edit_form)}}
+
+    <div class="col-md-12">
+        <a class="btn btn-default btn-w-md" href="{{ path('usuario') }}">
+            Regresar a usuarios
+        </a>
+        {{ form_widget(delete_form.submit, { 'attr': {'class': 'btn btn-w-md btn-accent', 'type': 'button'} }) }}
+    </div>
+</div>
+{% block bottomJavascripts %}
+{{parent()}}
+<script>
+  $(document).ready(function() {
+    $('.datepicker-here').datepicker({
+      minDate: new Date()
+    })
+  });
+</script>
+{% endblock %}
+{% endblock %}

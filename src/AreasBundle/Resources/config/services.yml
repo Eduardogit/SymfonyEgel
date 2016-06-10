@@ -1,0 +1,4 @@
+services:
+#    areas.example:
+#        class: AreasBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

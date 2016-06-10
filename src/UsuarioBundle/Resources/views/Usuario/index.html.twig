@@ -1,0 +1,70 @@
+{% extends '::baseAdmin.html.twig' %}
+{% block body %}
+{{parent()}}
+{% endblock %}
+{% block content %}
+{#{{parent()}}#}
+
+    <section class="content">
+        <h1>Panel de administración</h1>
+        <div class="container-fluid">
+        	<div class="row">
+			
+        		<div class="col-lg-3 col-md-7">
+        		<h1 ><small> Examenes anteriores</small></h1>
+                        <div class="panel panel-filled">
+                            <div class="panel-body">
+                                <h2 class="m-b-none">
+                                    1er Examen
+                                </h2>
+                                <span>Porcentaje</span>
+                                <div class="small">% 80</div>
+                                <div class="slight m-t-sm"><i class="fa fa-clock-o"> </i> Terminado: <span class="c-white">05/05/2016 10:22pm</span>  </div>
+                            </div>
+                        </div>
+                    </div>
+
+				<div class="col-md-12">
+        		<h1 ><small>Examen en curso</small></h1>
+        		<h2 style="color:#f5a212">Examen #1</h2>	
+        		</div>
+
+        		<div class="col-md-12">
+        		<div class="v-timeline vertical-container">
+					<div class="vertical-timeline-block">
+    				<div class="vertical-timeline-icon">
+    					<i class="fa fa-calendar"></i>
+    				</div>
+        			<div class="vertical-timeline-content">
+						<div class="p-sm">
+							<span class="vertical-date pull-right">
+								Sabado
+								<small>1:00 PM</small>
+							</span>
+							<h2>Matematicas</h2>
+							<p>Area resuelta<i class="fa fa-check"></i></p>
+						</div>
+        			</div>
+					</div>
+					<div class="vertical-timeline-block">
+    				<div class="vertical-timeline-icon">
+    					<i class="fa fa-calendar"></i>
+    				</div>
+        			<div class="vertical-timeline-content">
+						<div class="p-sm">
+							<span class="vertical-date pull-right">
+								
+							</span>
+							<h2>Software</h2>
+							<p>Area Pendiente</p>
+						</div>
+        			</div>
+					</div>
+        		</div>
+        		</div>
+
+        	</div>
+        </div>
+
+    </section>
+{% endblock %}

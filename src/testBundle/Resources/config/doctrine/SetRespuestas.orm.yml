@@ -1,0 +1,24 @@
+testBundle\Entity\SetRespuestas:
+    type: entity
+    table: null
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    oneToOne:
+        opcion:
+            targetEntity: Opciones
+            joinColumn:
+                name: opciones_id
+                referencedColumnName: id
+                onDelete: CASCADE
+    manyToOne:
+        test:
+            targetEntity: Test
+            joinColumn:
+                name: test_id
+                referencedColumnName: id
+                onDelete: CASCADE
+    lifecycleCallbacks: {  }

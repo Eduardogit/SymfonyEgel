@@ -1,0 +1,30 @@
+opciones:
+    path:     /
+    defaults: { _controller: "testBundle:Opciones:index" }
+
+opciones_show:
+    path:     /{id}/show
+    defaults: { _controller: "testBundle:Opciones:show" }
+
+opciones_new:
+    path:     /new
+    defaults: { _controller: "testBundle:Opciones:new" }
+
+opciones_create:
+    path:     /create
+    defaults: { _controller: "testBundle:Opciones:create" }
+    methods:  POST
+
+opciones_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "testBundle:Opciones:edit" }
+
+opciones_update:
+    path:     /{id}/update
+    defaults: { _controller: "testBundle:Opciones:update" }
+    methods:  [POST, PUT]
+
+opciones_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "testBundle:Opciones:delete" }
+    methods:  [POST, DELETE]

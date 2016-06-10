@@ -1,0 +1,56 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>AreasCompletadas</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Entornosocial</th>
+                <td>{{ entity.entornoSocial }}</td>
+            </tr>
+            <tr>
+                <th>Matematicas</th>
+                <td>{{ entity.matematicas }}</td>
+            </tr>
+            <tr>
+                <th>Arquitectura</th>
+                <td>{{ entity.arquitectura }}</td>
+            </tr>
+            <tr>
+                <th>Redes</th>
+                <td>{{ entity.redes }}</td>
+            </tr>
+            <tr>
+                <th>Software</th>
+                <td>{{ entity.software }}</td>
+            </tr>
+            <tr>
+                <th>Ingsoftware</th>
+                <td>{{ entity.ingSoftware }}</td>
+            </tr>
+            <tr>
+                <th>Graficacion</th>
+                <td>{{ entity.graficacion }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('areascompletadas') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('areascompletadas_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

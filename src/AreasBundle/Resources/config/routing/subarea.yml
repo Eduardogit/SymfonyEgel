@@ -1,0 +1,30 @@
+subarea:
+    path:     /
+    defaults: { _controller: "AreasBundle:SubArea:index" }
+
+subarea_show:
+    path:     /{id}/show
+    defaults: { _controller: "AreasBundle:SubArea:show" }
+
+subarea_new:
+    path:     /new
+    defaults: { _controller: "AreasBundle:SubArea:new" }
+
+subarea_create:
+    path:     /create
+    defaults: { _controller: "AreasBundle:SubArea:create" }
+    methods:  POST
+
+subarea_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AreasBundle:SubArea:edit" }
+
+subarea_update:
+    path:     /{id}/update
+    defaults: { _controller: "AreasBundle:SubArea:update" }
+    methods:  [POST, PUT]
+
+subarea_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AreasBundle:SubArea:delete" }
+    methods:  [POST, DELETE]

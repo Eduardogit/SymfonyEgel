@@ -1,0 +1,30 @@
+area:
+    path:     /
+    defaults: { _controller: "AreasBundle:Area:index" }
+
+area_show:
+    path:     /{id}/show
+    defaults: { _controller: "AreasBundle:Area:show" }
+
+area_new:
+    path:     /new
+    defaults: { _controller: "AreasBundle:Area:new" }
+
+area_create:
+    path:     /create
+    defaults: { _controller: "AreasBundle:Area:create" }
+    methods:  POST
+
+area_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AreasBundle:Area:edit" }
+
+area_update:
+    path:     /{id}/update
+    defaults: { _controller: "AreasBundle:Area:update" }
+    methods:  [POST, PUT]
+
+area_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AreasBundle:Area:delete" }
+    methods:  [POST, DELETE]

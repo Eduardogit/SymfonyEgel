@@ -1,0 +1,32 @@
+testBundle\Entity\Test:
+    type: entity
+    table: null
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        fechaInicio:
+            type: datetime
+        fechaFin:
+            type: datetime
+        estatus:
+            type: string
+            length: '10'
+    oneToOne:
+        areasCompletadas:
+            targetEntity: AreasCompletadas
+            joinColumn:
+                name: areasCompletadas_id
+                referencedColumnName: id
+                onDelete: CASCADE
+    oneToOne:
+        usuario:
+            targetEntity: UsuarioBundle\Entity\Usuario
+            joinColumn:
+                name: usuario_id
+                referencedColumnName: id
+                onDelete: CASCADE
+    lifecycleCallbacks: {  }

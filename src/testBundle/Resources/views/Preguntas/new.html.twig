@@ -1,0 +1,20 @@
+{% extends '::baseAdmin.html.twig' %}
+{% block body %}
+{{parent()}}
+{% endblock %}
+{% block content %}
+{#{{parent()}}#}
+<section class="content">
+	<h1>Panel de administración <small> > Preguntas</small></h1>
+	<div class="container-fluid">
+		<div class="row">
+			{{ form(form) }}
+			<div class="col-md-12">
+                <a class="btn btn-default btn-w-md" href="{{ path('usuario') }}">
+                    Regresar a usuarios
+                </a>
+            </div>
+		</div>
+	</div>
+</section>
+{% endblock %}

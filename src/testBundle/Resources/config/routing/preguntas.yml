@@ -1,0 +1,30 @@
+preguntas:
+    path:     /
+    defaults: { _controller: "testBundle:Preguntas:index" }
+
+preguntas_show:
+    path:     /{id}/show
+    defaults: { _controller: "testBundle:Preguntas:show" }
+
+preguntas_new:
+    path:     /new
+    defaults: { _controller: "testBundle:Preguntas:new" }
+
+preguntas_create:
+    path:     /create
+    defaults: { _controller: "testBundle:Preguntas:create" }
+    methods:  POST
+
+preguntas_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "testBundle:Preguntas:edit" }
+
+preguntas_update:
+    path:     /{id}/update
+    defaults: { _controller: "testBundle:Preguntas:update" }
+    methods:  [POST, PUT]
+
+preguntas_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "testBundle:Preguntas:delete" }
+    methods:  [POST, DELETE]

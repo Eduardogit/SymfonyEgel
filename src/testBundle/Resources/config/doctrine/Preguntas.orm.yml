@@ -1,0 +1,27 @@
+testBundle\Entity\Preguntas:
+    type: entity
+    table: null
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        pregunta:
+            type: string
+            length: 255
+        descripcion:
+            type: string
+            length: 255
+        respuestaCorrecta:
+            type: string
+            length: 255
+    manyToOne:
+        subarea:
+            targetEntity: AreasBundle\Entity\SubArea
+            joinColumn:
+                name: subarea_id
+                referencedColumnName: id
+                onDelete: CASCADE
+    lifecycleCallbacks: {  }

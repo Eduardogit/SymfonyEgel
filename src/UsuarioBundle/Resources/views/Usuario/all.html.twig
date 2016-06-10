@@ -1,0 +1,40 @@
+{% extends '::baseAdmin.html.twig' %}
+{% block body %}
+{{parent()}}
+{% endblock %}
+{% block content %}
+
+<section class="content">
+	<div class="container-fluid">
+		<div class="row">
+		<div class="table-responsive">
+				<table class="table" records_list">
+					<thead>
+						<tr>
+							<th>Nombre de Usuario</th>
+							<th>Nombre</th>
+							<th>Apellido Paterno</th>
+							<th>Apellido Materno</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for entity in entities %}
+						<tr>
+							<td>{{ entity.username }}</td>
+							<td>{{ entity.nombre }}</td>
+							<td>{{ entity.apPaterno }}</td>	
+							<td>{{ entity.apMaterno }}</td>
+							<td><a  class="btn btn-w-md btn-primary" href="{{ path('usuario_show', { 'id': entity.id }) }}">Mostrar</a></td>
+							<td><a  class="btn btn-w-md btn-primary" href="{{ path('usuario_edit', { 'id': entity.id }) }}">Editar</a></td>
+						</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+				<a class="btn btn-w-md btn-accent" href="{{ path('usuario_new') }}">
+				crear nuevo usuario
+				</a>
+			</div>
+		</div>
+	</div>
+</section>
+{% endblock %}

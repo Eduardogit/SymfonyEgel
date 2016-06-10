@@ -1,0 +1,30 @@
+areascompletadas:
+    path:     /
+    defaults: { _controller: "testBundle:AreasCompletadas:index" }
+
+areascompletadas_show:
+    path:     /{id}/show
+    defaults: { _controller: "testBundle:AreasCompletadas:show" }
+
+areascompletadas_new:
+    path:     /new
+    defaults: { _controller: "testBundle:AreasCompletadas:new" }
+
+areascompletadas_create:
+    path:     /create
+    defaults: { _controller: "testBundle:AreasCompletadas:create" }
+    methods:  POST
+
+areascompletadas_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "testBundle:AreasCompletadas:edit" }
+
+areascompletadas_update:
+    path:     /{id}/update
+    defaults: { _controller: "testBundle:AreasCompletadas:update" }
+    methods:  [POST, PUT]
+
+areascompletadas_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "testBundle:AreasCompletadas:delete" }
+    methods:  [POST, DELETE]

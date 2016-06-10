@@ -1,0 +1,45 @@
+testBundle\Entity\AreasCompletadas:
+    type: entity
+    table: null
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        entornoSocial:
+            type: string
+            length: '10'
+            column: EntornoSocial
+        matematicas:
+            type: string
+            length: '10'
+            column: Matematicas
+        arquitectura:
+            type: string
+            length: '10'
+            column: Arquitectura
+        redes:
+            type: string
+            length: '10'
+            column: Redes
+        software:
+            type: string
+            length: '10'
+            column: Software
+        ingSoftware:
+            type: string
+            length: '10'
+        graficacion:
+            type: string
+            length: '10'
+            column: Graficacion
+    oneToOne:
+        test:
+            targetEntity: Test
+            joinColumn:
+                name: test_id
+                referencedColumnName: id
+                onDelete: CASCADE
+    lifecycleCallbacks: {  }

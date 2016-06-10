@@ -1,0 +1,48 @@
+UsuarioBundle\Entity\Usuario:
+    type: entity
+    table: null
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        username:
+            type: string
+            length: '20'
+        password:
+            type: string
+            length: '200'
+        correo:
+            type: string
+            length: '50'
+        nombre:
+            type: string
+            length: '20'
+        apPaterno:
+            type: string
+            length: '20'
+        apMaterno:
+            type: string
+            length: '20'
+        fechaNacimiento:
+            type: datetime
+        sexo:
+            type: string
+            length: '10'
+        domicilio:
+            type: string
+            length: '50'
+        municipio:
+            type: string
+            length: '50'
+        estado:
+            type: string
+            length: '50'
+        matricula:
+            type: integer
+        role: 
+            type: string
+            length: '100'
+    lifecycleCallbacks: {  }

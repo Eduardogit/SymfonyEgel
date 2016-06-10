@@ -1,0 +1,20 @@
+AreasBundle\Entity\Reactivos:
+    type: entity
+    table: null
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        reactivosMaximos:
+            type: integer
+    manyToOne:
+        perfil:
+            targetEntity: Perfil
+            joinColumn:
+                name: perfil_id
+                referencedColumnName: id
+                onDelete: CASCADE
+    lifecycleCallbacks: {  }

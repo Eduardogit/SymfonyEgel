@@ -1,0 +1,143 @@
+{% extends '::base.html.twig' %}
+{% block topJavascripts %}
+{{parent()}}
+<script src="{{asset('public/bootstrap/js/bootstrap.js')}}"></script>
+<script src="{{asset('public/js/calendar.js')}}"></script>
+<script src="{{asset('public/js/calendar-en.js')}}"></script>
+{% endblock %}
+
+{% block stylesheets %}
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{asset('public/bootstrap/css/bootstrap.css')}}">
+<link rel="stylesheet" href="{{asset('public/css/login.css')}}">
+<link rel="stylesheet" href="{{asset('public/css/calendar.css')}}">
+{% endblock %}
+
+{% block body %}
+<body style="background: url({{asset('public/img/backlogin.jpg')}})center center no-repeat fixed;background-size:cover">
+  <div class="container">
+    <ul class="nav nav-tabs">
+      <li ><a data-toggle="tab" href="#login">Login</a></li>
+      <li><a data-toggle="tab" href="#registro">Registro Aspirante</a></li>
+    </ul>
+    <div class="tab-content">
+      <div id="login" class="tab-pane fade in active">
+       <div id="login" class="col-md-6 col-md-offset-3">
+         <div class="container-fluid">
+          <div class="row">
+            <form action="{{ path('login_check') }}" method="POST" name="login_form" class="form-input-flat">
+              <div class="form-group">
+                <label for="">Usuario</label>
+                <input  id="email" type="text" name="_username" values="" tabindex="1" class="form-control " placeholder="Usuario:" />
+              </div>
+              <div class="form-group">
+                <label for="">Password</label>
+                <input id="pass" type="password" tabindex="2" name="_password"  class="form-control "  placeholder="Contraseña:" />
+              </div>
+              <input type="checkbox">
+              <label for="" class="text-primary"><strong>Recordarme</strong></label>
+              <button class="btn btn-primary btn-lg btn-block">Acceder</button> 
+            </form>
+            <hr>
+            <label for="" class="text-center"><a href="">Olvidaste tu contraseña ?</a></label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="registro" class="tab-pane fade">
+      <div class="container-fluid">
+        <div class="row">
+          {{ form_start(form) }}
+          <div class="col-md-6">
+            <div class="form-group">
+              {{ form_label(form.username) }}
+              {{ form_errors(form.username) }}
+              {{ form_widget(form.username) }}
+            </div>
+            <div class="form-group">
+              {{ form_label(form.password) }}
+              {{ form_errors(form.password) }}
+              {{ form_widget(form.password) }}
+            </div>
+            <div class="form-group">
+              {{ form_label(form.correo) }}
+              {{ form_errors(form.correo) }}
+              {{ form_widget(form.correo) }}
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              {{ form_label(form.nombre) }}
+              {{ form_errors(form.nombre) }}
+              {{ form_widget(form.nombre) }}
+            </div>
+            <div class="form-group">
+              {{ form_label(form.apPaterno) }}
+              {{ form_errors(form.apPaterno) }}
+              {{ form_widget(form.apPaterno) }}
+            </div>
+            <div class="form-group">
+              {{ form_label(form.apMaterno) }}
+              {{ form_errors(form.apMaterno) }}
+              {{ form_widget(form.apMaterno) }}
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              {{ form_label(form.fechaNacimiento) }}
+              {{ form_errors(form.fechaNacimiento) }}
+              {{ form_widget(form.fechaNacimiento) }}
+            </div>
+            <div class="form-group">
+              {{ form_label(form.sexo) }}
+              {{ form_errors(form.sexo) }}
+              {{ form_widget(form.sexo) }}
+            </div>
+            <div class="form-group">
+              {{ form_label(form.domicilio) }}
+              {{ form_errors(form.domicilio) }}
+              {{ form_widget(form.domicilio) }}
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              {{ form_label(form.municipio) }}
+              {{ form_errors(form.municipio) }}
+              {{ form_widget(form.municipio) }}
+            </div>
+            <div class="form-group">
+              {{ form_label(form.estado) }}
+              {{ form_errors(form.estado) }}
+              {{ form_widget(form.estado) }}
+            </div>
+            <div class="form-group">
+              {{ form_label(form.matricula) }}
+              {{ form_errors(form.matricula) }}
+              {{ form_widget(form.matricula) }}
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              {{ form_errors(form.role) }}
+              {{ form_widget(form.role) }}
+            </div>
+          </div>
+          {{ form_end(form) }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% block bottomJavascripts %}
+<script>
+  $(document).ready(function() {
+    $('.datepicker-here').datepicker({
+      minDate: new Date()
+    })
+  });
+</script>
+{% endblock %}
+</body>
+{% endblock %}
+

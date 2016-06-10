@@ -1,0 +1,30 @@
+reactivos:
+    path:     /
+    defaults: { _controller: "AreasBundle:Reactivos:index" }
+
+reactivos_show:
+    path:     /{id}/show
+    defaults: { _controller: "AreasBundle:Reactivos:show" }
+
+reactivos_new:
+    path:     /new
+    defaults: { _controller: "AreasBundle:Reactivos:new" }
+
+reactivos_create:
+    path:     /create
+    defaults: { _controller: "AreasBundle:Reactivos:create" }
+    methods:  POST
+
+reactivos_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AreasBundle:Reactivos:edit" }
+
+reactivos_update:
+    path:     /{id}/update
+    defaults: { _controller: "AreasBundle:Reactivos:update" }
+    methods:  [POST, PUT]
+
+reactivos_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AreasBundle:Reactivos:delete" }
+    methods:  [POST, DELETE]

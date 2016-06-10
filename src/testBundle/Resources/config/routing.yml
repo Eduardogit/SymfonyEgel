@@ -1,0 +1,23 @@
+test_preguntas:
+    resource: "@testBundle/Resources/config/routing/preguntas.yml"
+    prefix:   /preguntas
+
+test_setrespuestas:
+    resource: "@testBundle/Resources/config/routing/setrespuestas.yml"
+    prefix:   /setrespuestas
+
+test_areascompletadas:
+    resource: "@testBundle/Resources/config/routing/areascompletadas.yml"
+    prefix:   /areascompletadas
+
+test_opciones:
+    resource: "@testBundle/Resources/config/routing/opciones.yml"
+    prefix:   /opciones
+
+test_test:
+    resource: "@testBundle/Resources/config/routing/test.yml"
+    prefix:   /test
+
+test_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: testBundle:Default:index }

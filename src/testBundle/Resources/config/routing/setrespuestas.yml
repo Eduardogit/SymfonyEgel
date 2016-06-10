@@ -1,0 +1,30 @@
+setrespuestas:
+    path:     /
+    defaults: { _controller: "testBundle:SetRespuestas:index" }
+
+setrespuestas_show:
+    path:     /{id}/show
+    defaults: { _controller: "testBundle:SetRespuestas:show" }
+
+setrespuestas_new:
+    path:     /new
+    defaults: { _controller: "testBundle:SetRespuestas:new" }
+
+setrespuestas_create:
+    path:     /create
+    defaults: { _controller: "testBundle:SetRespuestas:create" }
+    methods:  POST
+
+setrespuestas_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "testBundle:SetRespuestas:edit" }
+
+setrespuestas_update:
+    path:     /{id}/update
+    defaults: { _controller: "testBundle:SetRespuestas:update" }
+    methods:  [POST, PUT]
+
+setrespuestas_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "testBundle:SetRespuestas:delete" }
+    methods:  [POST, DELETE]

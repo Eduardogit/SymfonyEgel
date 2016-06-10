@@ -1,0 +1,39 @@
+{% extends '::baseAdmin.html.twig' %}
+{% block body %}
+{{parent()}}
+{% endblock %}
+{% block content %}
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="table-responsive">
+
+                <table class="table records_list">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for entity in entities %}
+                        <tr>
+                            <td>{{ entity.nombre }}</td>
+                           <td>
+                                <a  class="btn btn-w-md btn-primary" href="{{ path('area_show', { 'id': entity.id }) }}">Mostrar</a>
+                            </td>
+                            <td>
+                                <a  class="btn btn-w-md btn-primary" href="{{ path('area_edit', { 'id': entity.id }) }}">Editar</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <a class="btn btn-w-md btn-accent" href="{{ path('area_new') }}">
+                crear nueva area
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

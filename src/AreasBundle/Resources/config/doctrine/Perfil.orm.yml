@@ -1,0 +1,23 @@
+AreasBundle\Entity\Perfil:
+    type: entity
+    table: null
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        nombre:
+            type: string
+            length: 255
+        calificacionParcial:
+            type: float
+    manyToOne:
+        subarea:
+            targetEntity: SubArea
+            joinColumn:
+                name: subarea_id
+                referencedColumnName: id
+                onDelete: CASCADE
+    lifecycleCallbacks: {  }

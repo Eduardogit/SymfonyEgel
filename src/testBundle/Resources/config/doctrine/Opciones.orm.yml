@@ -1,0 +1,21 @@
+testBundle\Entity\Opciones:
+    type: entity
+    table: null
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        opcion:
+            type: string
+            length: 255
+    manyToOne:
+        pregunta:
+            targetEntity: Preguntas
+            joinColumn:
+                name: pregunta_id
+                referencedColumnName: id
+                onDelete: CASCADE
+    lifecycleCallbacks: {  }
