@@ -8,7 +8,64 @@
 	<h1>Panel de administración <small> > Preguntas</small></h1>
 	<div class="container-fluid">
 		<div class="row">
-			{{ form(form) }}
+			{{ form_start(form) }}
+
+            <div class="form-group">
+            {{form_label(form.descripcion)}}
+            {{form_widget(form.descripcion)}}
+            </div>
+            <div class="form-group">
+            {{form_label(form.pregunta)}}
+            {{form_widget(form.pregunta)}}
+            </div>
+            <div class="form-group">
+            {{form_label(form.respuestaCorrecta)}}
+            {{form_widget(form.respuestaCorrecta)}}
+            </div>
+            <div class="form-group">
+            {{form_label(form.subarea)}}
+            {{form_widget(form.subarea)}}
+            </div>
+
+                <ul id="opciones-lista"
+                    data-prototype="{{ form_widget(form.opciones.vars.prototype)|e }}">
+                {% for opcion in form.opciones %}
+                    <li>
+                        {{ form_errors(opcion) }}
+                        {{ form_widget(opcion) }}
+                    </li>
+                {% endfor %}
+                </ul>
+
+                <a href="#" id="add">Agregar otra opcion</a>
+
+            {{ form_end(form) }}
+
+<script type="text/javascript">
+    // keep track of how many email fields have been rendered
+    var emailCount = '{{ form.opciones|length }}';
+
+    jQuery(document).ready(function() {
+        jQuery('#add').click(function(e) {
+            e.preventDefault();
+
+            var emailList = jQuery('#opciones-lista');
+
+            // grab the prototype template
+            var newWidget = emailList.attr('data-prototype');
+            // replace the "__name__" used in the id and name of the prototype
+            // with a number that's unique to your emails
+            // end name attribute looks like name="contact[emails][2]"
+            newWidget = newWidget.replace(/__name__/g, emailCount);
+            emailCount++;
+
+            // create a new list element and add it to the list
+            var newLi = jQuery('<li></li>').html(newWidget);
+            newLi.appendTo(emailList);
+        });
+    })
+</script>
+
 			<div class="col-md-12">
                 <a class="btn btn-default btn-w-md" href="{{ path('usuario') }}">
                     Regresar a usuarios

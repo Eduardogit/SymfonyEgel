@@ -136,4 +136,32 @@ class Test
     {
         return $this->usuario;
     }
+    /**
+     * @var \testBundle\Entity\AreasCompletadas
+     */
+    private $areasCompletadas;
+
+
+    /**
+     * Set areasCompletadas
+     *
+     * @param \testBundle\Entity\AreasCompletadas $areasCompletadas
+     * @return Test
+     */
+    public function setAreasCompletadas(\testBundle\Entity\AreasCompletadas $areasCompletadas = null)
+    {
+        $this->areasCompletadas = $areasCompletadas;
+
+        return $this;
+    }
+
+    /**
+     * Get areasCompletadas
+     *
+     * @return \testBundle\Entity\AreasCompletadas 
+     */
+    public function getAreasCompletadas()
+    {
+        return $this->areasCompletadas;
+    }
 }

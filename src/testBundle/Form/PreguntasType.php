@@ -15,23 +15,42 @@ class PreguntasType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('descripcion'  ,'text',array('attr' => array('class'=> 'form-control',
-                'placeholder' =>'ingresa la descripcion de la pregunta'
+            ->add('descripcion'  ,'text',array(
+                                        'attr' => array(
+                                                'class'=> 'form-control',
+                                                'placeholder' =>'ingresa la descripcion de la pregunta'
                 )))
-            ->add('pregunta'  ,'text',array('attr' => array('class'=> 'form-control',
-                'placeholder' =>'Ingresa tu pregunta'
+            ->add('pregunta'  ,'text',array(
+                                    'attr' => array(
+                                             'class'=> 'form-control',
+                                             'placeholder' =>'Ingresa tu pregunta'
                 )))
-            ->add('respuestaCorrecta'   ,'text',array('attr' => array('class'=> 'form-control',
-                'placeholder' =>'Ingresa tu respuesta correcta'
-                )))
+            ->add('respuestaCorrecta'   ,'choice',array(
+                                                'choices' => array(
+                                                    'a' => 'a',
+                                                    'b' => 'b',
+                                                    'c' => 'c',
+                                                    'd' => 'd',
+                                                    ),
+                                                        'attr' => array('class'=> 'form-control',
+                                                        'placeholder' =>'Ingresa tu respuesta correcta'
+                                                        )))
             ->add('subarea', 'entity', array(
-                'class' => 'AreasBundle:SubArea',
-                'property' => 'nombre',
-                'attr' => array(
-                        'class'=> 'form-control',
-                        'placeholder' =>'Seleciona la subarea')))
-            ->add('opciones',new OpcionesType())
-
+                                        'class' => 'AreasBundle:SubArea',
+                                        'property' => 'nombre',
+                                        'attr' => array(
+                                                'class'=> 'form-control',
+                                                'placeholder' =>'Seleciona la subarea')))
+            ->add('opciones', 'collection', array(
+                                            'entry_type'   => new OpcionesType(),
+                                            'allow_add' => true,
+                                            'prototype' => true,
+                                            'prototype_data' => new \testBundle\Entity\Opciones(),
+                                            'by_reference' => false,
+                                            'entry_options'  => array(
+                                                'required'  => false,
+                                                'attr'      => array('class' => 'opciones')
+                                            )))
         ;
     }
     

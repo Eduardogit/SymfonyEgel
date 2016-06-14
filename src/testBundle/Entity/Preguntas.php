@@ -174,13 +174,15 @@ class Preguntas
     private $opciones;
 
 
+    
+
     /**
      * Set opciones
      *
-     * @param \testBundle\Entity\opciones $opciones
-     * @return Opciones
+     * @param \testBundle\Entity\Opciones $opciones
+     * @return Preguntas
      */
-    public function setOpciones(\testBundle\Entity\Opciones $opciones = null)
+    public function setOpciones( $opciones = null)
     {
         $this->opciones = $opciones;
 
@@ -190,7 +192,7 @@ class Preguntas
     /**
      * Get opciones
      *
-     * @return \testBundle\Entity\opciones 
+     * @return \testBundle\Entity\Opciones 
      */
     public function getOpciones()
     {

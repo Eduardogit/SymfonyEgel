@@ -15,15 +15,13 @@ class OpcionesType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+           /* ->add('pregunta','entity',array(
+                'class' =>'testBundle:Preguntas',
+                'property' => 'pregunta' ))*/
             ->add('opcion','text',array('attr' => array('class'=> 'form-control',
                 'placeholder' =>'ingresa una opcion a la pregunta'
                 )))
-            ->add('pregunta', 'entity', array(
-                'class' => 'testBundle:Preguntas',
-                'property' => 'id',
-                'attr' =>array(
-                    'class' => 'form-control'
-                )))
+            
         ;
     }
     

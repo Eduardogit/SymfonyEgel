@@ -7,6 +7,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use testBundle\Entity\Preguntas;
 use testBundle\Form\PreguntasType;
+use testBundle\Entity\Opciones;
+use testBundle\Form\OpcionesType;
 
 /**
  * Preguntas controller.
@@ -38,11 +40,25 @@ class PreguntasController extends Controller
         $entity = new Preguntas();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
+        $em = $this->getDoctrine()->getManager();
+        #echo "<pre>";
+        #print_r($request);
+        #echo "</pre>";
+        #die();
+
 
         if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
+            foreach ($entity->getOpciones() as $key ) {
+                $opcionEntity=new Opciones();
+                $opcion = $key->getOpcion();
+                $opcionEntity->setPregunta($entity);
+                $opcionEntity->setOpcion($opcion);
+                $em->persist($opcionEntity);
+                $em->flush();
+            }
+
 
             return $this->redirect($this->generateUrl('preguntas_show', array('id' => $entity->getId())));
         }

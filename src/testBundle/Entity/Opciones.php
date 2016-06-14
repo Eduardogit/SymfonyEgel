@@ -55,33 +55,9 @@ class Opciones
     /**
      * @var \AreasBundle\Entity\SubArea
      */
-    private $subarea;
-
-
+    
     /**
-     * Set subarea
-     *
-     * @param \AreasBundle\Entity\SubArea $subarea
-     * @return Opciones
-     */
-    public function setSubarea(\AreasBundle\Entity\SubArea $subarea = null)
-    {
-        $this->subarea = $subarea;
-
-        return $this;
-    }
-
-    /**
-     * Get subarea
-     *
-     * @return \AreasBundle\Entity\SubArea 
-     */
-    public function getSubarea()
-    {
-        return $this->subarea;
-    }
-    /**
-     * @var \AreasBundle\Entity\Preguntas
+     * @var \testBundle\Entity\Preguntas
      */
     private $pregunta;
 
@@ -89,10 +65,10 @@ class Opciones
     /**
      * Set pregunta
      *
-     * @param \AreasBundle\Entity\Preguntas $pregunta
+     * @param \testBundle\Entity\Opciones $pregunta
      * @return Opciones
      */
-    public function setPregunta(\AreasBundle\Entity\Preguntas $pregunta = null)
+    public function setPregunta(\testBundle\Entity\Preguntas $pregunta = null)
     {
         $this->pregunta = $pregunta;
 
@@ -102,7 +78,7 @@ class Opciones
     /**
      * Get pregunta
      *
-     * @return \AreasBundle\Entity\Preguntas 
+     * @return \testBundle\Entity\Opciones 
      */
     public function getPregunta()
     {
