@@ -1,45 +1,62 @@
-{% extends '::base.html.twig' %}
+{% extends '::baseAdmin.html.twig' %}
+{% block body %}
+{{parent()}}
+{% endblock %}
+{% block content %}
+{#{{parent()}}#}
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <h1>Iniciar nuevo Examen</h1>
+            <div class="panel panel-filled">
+                <div class="panel-heading">Usuario: <small>{{user.username}}</small></div>
+                <div class="panel-body">
+                <p>Datos</p>
+                    <div class="bs-example">
+                        <dl>
+                            <dt>Nombre completo</dt>
+                            <dd>{{user.nombre~' '~user.apPaterno~' '~user.apMaterno}} </dd>
+                        </dl>
+                        <dl>
+                            <dt>Fecha de nacimiento</dt>
+                            <dd>{{user.fechaNacimiento|date('d/m/Y')}} </dd>
+                        </dl>
+                        <dl>
+                            <dt>Domicilio</dt>
+                            <dd> {{'Calle '~user.domicilio~' , '~user.municipio~',  Estado '~user.estado}} </dd>
+                        </dl>
+                        <dl>
+                            <dt>Matricula</dt>
+                            <dd>{{user.matricula}} </dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+            <!-- INDICACIONES -->
+            <div class="panel panel-filled">
+                <div class="panel-heading">Descripcion del examen</div>
+                <div class="panel-body">
+                <p>Indicaciones</p>
 
-{% block body -%}
-    <h1>Test list</h1>
-
-    <table class="records_list">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Fechainicio</th>
-                <th>Fechafin</th>
-                <th>Estatus</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for entity in entities %}
-            <tr>
-                <td><a href="{{ path('test_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                <td>{% if entity.fechaInicio %}{{ entity.fechaInicio|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{% if entity.fechaFin %}{{ entity.fechaFin|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{{ entity.estatus }}</td>
-                <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('test_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('test_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-        <ul>
-        <li>
-            <a href="{{ path('test_new') }}">
-                Create a new entry
+                    <div class="bs-example">
+                    <ul>
+                        <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit quaerat delectus eius vel, voluptates, asperiores nihil veritatis minus libero sit ea, et natus quia voluptatum beatae omnis consectetur rerum, dolore?</li>
+                        <ul>
+                            <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio qui nam assumenda, fugiat corporis quasi, laboriosam repudiandae! Ab fugiat, quasi pariatur eius molestias eligendi corrupti, maxime hic et sint voluptas!</li>
+                        </ul>
+                        <li>Et dolorem praesentium harum assumenda voluptatibus iste rem, fugit earum nulla quibusdam repellat deserunt aliquam quis, unde eveniet facilis nostrum, odit deleniti voluptatem alias impedit perspiciatis eligendi nemo. Consequuntur, aut.</li>
+                        <li>Facilis reprehenderit autem quas, aliquam eveniet modi enim. Odio nam, aliquam facere maxime corporis nesciunt fugiat placeat ab. Quasi quae facilis aut. Hic obcaecati eligendi ad nisi accusamus modi facilis!</li>
+                        <li>Nobis tenetur laboriosam ipsum sed consequuntur voluptate minima in placeat voluptatibus ab quidem aut, maiores laborum cupiditate, ad rerum labore doloremque commodi porro qui id blanditiis quae adipisci! Nemo, a.</li>
+                        <li>Temporibus, quo quae error nulla eligendi excepturi dolorem ab deserunt velit similique placeat, ducimus, hic perspiciatis aperiam. A saepe delectus, voluptatum hic ratione, accusantium quasi. Voluptate eum obcaecati optio nostrum.</li>
+                    </ul>
+                    </div>
+                </div>
+            </div>
+            <a class="btn btn-block btn-lg btn-warning" href="{{ path('test_new') }}">
+                Comenzar
             </a>
-        </li>
-    </ul>
-    {% endblock %}
+
+        </div>
+    </div>
+</section>    
+{% endblock %}

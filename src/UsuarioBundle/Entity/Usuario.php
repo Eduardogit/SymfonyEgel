@@ -434,4 +434,32 @@ class Usuario  implements UserInterface
     }
     
 
+    /**
+     * @var \AreasBundle\Entity\Perfil
+     */
+    private $perfil;
+
+
+    /**
+     * Set perfil
+     *
+     * @param \AreasBundle\Entity\Perfil $perfil
+     * @return Usuario
+     */
+    public function setPerfil(\AreasBundle\Entity\Perfil $perfil = null)
+    {
+        $this->perfil = $perfil;
+
+        return $this;
+    }
+
+    /**
+     * Get perfil
+     *
+     * @return \AreasBundle\Entity\Perfil 
+     */
+    public function getPerfil()
+    {
+        return $this->perfil;
+    }
 }

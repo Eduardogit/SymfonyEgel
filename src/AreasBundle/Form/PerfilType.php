@@ -16,11 +16,7 @@ class PerfilType extends AbstractType
     {
         $builder
             ->add('nombre')
-            ->add('calificacionParcial')
-            ->add('subarea', 'entity', array(
-                'class' => 'AreasBundle:SubArea',
-                'property' => 'nombre',
-                ))
+            
         ;
     }
     

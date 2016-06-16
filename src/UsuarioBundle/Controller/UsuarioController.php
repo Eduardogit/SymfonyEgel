@@ -34,6 +34,7 @@ class UsuarioController extends Controller
 
         $entities = $em->getRepository('UsuarioBundle:Usuario')->findAll();
 
+        
         return $this->render('UsuarioBundle:Usuario:index.html.twig', array(
             'entities' => $entities,
         ));
@@ -58,6 +59,11 @@ class UsuarioController extends Controller
             $entity->setPassword($encoded);
             $em->persist($entity);
             $em->flush();
+            
+            $request->getSession()
+            ->getFlashBag()
+            ->add('success', 'Usuario Correctamente creado')
+            ;
 
             return $this->redirect($this->generateUrl('usuario_show', array('id' => $entity->getId())));
         }
@@ -133,6 +139,12 @@ class UsuarioController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('UsuarioBundle:Usuario')->find($id);
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+        
+        if($user->getId() != $id){
+            return $this->redirect($this->generateUrl('usuario'));
+        }
+
         
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Usuario entity.');

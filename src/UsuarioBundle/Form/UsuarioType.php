@@ -61,6 +61,12 @@ class UsuarioType extends AbstractType
             ->add('matricula'     ,'integer',array('attr' => array('class'=> 'form-control',
                 'placeholder' =>'matricula'
                 )))
+            ->add('perfil', 'entity', array(
+               'class' => 'AreasBundle:Perfil',
+               'property' => 'nombre',
+                'attr' => array(
+                    'class' => 'form-control'
+                )))
             ->add('role','hidden', array(
                         'attr' => array(
                         'required' => false

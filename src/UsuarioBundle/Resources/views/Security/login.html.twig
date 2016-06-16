@@ -15,6 +15,14 @@
 {% endblock %}
 
 {% block body %}
+{% if app.session.flashBag.has('success') %}
+        <div class="alert alert-success">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            {% for msg in app.session.flashBag.get('success') %}
+                {{ msg }}
+            {% endfor %}
+        </div>
+    {% endif %}
 <body style="background: url({{asset('public/img/backlogin.jpg')}})center center no-repeat fixed;background-size:cover">
   <div class="container">
     <ul class="nav nav-tabs">

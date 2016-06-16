@@ -17,7 +17,9 @@ class TestType extends AbstractType
         $builder
             ->add('fechaInicio')
             ->add('fechaFin')
-            ->add('estatus')
+            ->add('estatus','text',array('attr' => array('class'=> 'form-control',
+                'Value' =>'Sin Comenzar'
+                )))
         ;
     }
     

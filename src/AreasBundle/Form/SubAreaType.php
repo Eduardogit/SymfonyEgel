@@ -16,8 +16,13 @@ class SubAreaType extends AbstractType
     {
         $builder
             ->add('nombre')
+            ->add('calificacionParcial')
             ->add('area', 'entity', array(
                 'class' => 'AreasBundle:Area',
+                'property' => 'nombre',
+                ))
+            ->add('perfil', 'entity', array(
+                'class' => 'AreasBundle:Perfil',
                 'property' => 'nombre',
                 ))
         ;

@@ -2,10 +2,6 @@ areas_reactivos:
     resource: "@AreasBundle/Resources/config/routing/reactivos.yml"
     prefix:   /reactivos
 
-areas_perfil:
-    resource: "@AreasBundle/Resources/config/routing/perfil.yml"
-    prefix:   /perfil
-
 areas_subarea:
     resource: "@AreasBundle/Resources/config/routing/subarea.yml"
     prefix:   /subarea
@@ -13,4 +9,8 @@ areas_subarea:
 areas_area:
     resource: "@AreasBundle/Resources/config/routing/area.yml"
     prefix:   /area
+
+AreasBundle_perfil:
+        resource: "@AreasBundle/Resources/config/routing/perfil.yml"
+        prefix:   /perfil
 

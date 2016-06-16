@@ -10,6 +10,9 @@ class SecurityController extends Controller
 {
     public function loginAction()
     {
+    
+
+
         //Instanciar clase usuario para meter registro en el login
         $entity = new Usuario();
         $form   = $this->createCreateForm($entity);

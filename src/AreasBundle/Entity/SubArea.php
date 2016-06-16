@@ -85,6 +85,90 @@ class SubArea
     {
         return (string) $this->getArea();
     }
+    
+
+    /**
+     * @var float
+     */
+    private $calificacionParcial;
 
 
+    /**
+     * Set calificacionParcial
+     *
+     * @param float $calificacionParcial
+     * @return SubArea
+     */
+    public function setCalificacionParcial($calificacionParcial)
+    {
+        $this->calificacionParcial = $calificacionParcial;
+
+        return $this;
+    }
+
+    /**
+     * Get calificacionParcial
+     *
+     * @return float 
+     */
+    public function getCalificacionParcial()
+    {
+        return $this->calificacionParcial;
+    }
+    /**
+     * @var \AreasBundle\Entity\Perfil
+     */
+    private $peril;
+
+
+    /**
+     * Set peril
+     *
+     * @param \AreasBundle\Entity\Perfil $peril
+     * @return SubArea
+     */
+    public function setPeril(\AreasBundle\Entity\Perfil $peril = null)
+    {
+        $this->peril = $peril;
+
+        return $this;
+    }
+
+    /**
+     * Get peril
+     *
+     * @return \AreasBundle\Entity\Perfil 
+     */
+    public function getPeril()
+    {
+        return $this->peril;
+    }
+    /**
+     * @var \AreasBundle\Entity\Perfil
+     */
+    private $perfil;
+
+
+    /**
+     * Set perfil
+     *
+     * @param \AreasBundle\Entity\Perfil $perfil
+     * @return SubArea
+     */
+    public function setPerfil(\AreasBundle\Entity\Perfil $perfil = null)
+    {
+        $this->perfil = $perfil;
+
+        return $this;
+    }
+
+    /**
+     * Get perfil
+     *
+     * @return \AreasBundle\Entity\Perfil 
+     */
+    public function getPerfil()
+    {
+        return $this->perfil;
+    }
 }

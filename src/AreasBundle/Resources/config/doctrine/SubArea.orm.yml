@@ -11,11 +11,20 @@ AreasBundle\Entity\SubArea:
         nombre:
             type: string
             length: 255
+        calificacionParcial:
+            type: float
+            nullable: true 
     manyToOne:
         Area:
             targetEntity: Area
             joinColumn:
                 name: area_id
+                referencedColumnName: id
+                onDelete: CASCADE
+        perfil:
+            targetEntity: Perfil
+            joinColumn:
+                name: perfil_id
                 referencedColumnName: id
                 onDelete: CASCADE
     lifecycleCallbacks: {  }

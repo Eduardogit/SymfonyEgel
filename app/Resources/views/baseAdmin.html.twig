@@ -29,7 +29,7 @@
 </head>
 <body>
     {% block body %}
-    
+     
     <!-- Wrapper-->
     <div class="wrapper">
 
@@ -61,8 +61,8 @@
                                 <a aria-expanded="true" data-toggle="dropdown" class=" dropdown-toggle">
                                     {% if is_granted("ROLE_USER") %}
                                     {{ app.user.nombre | default('admin')}}
-                                    {% elseif is_granted("IS_AUTHENTICATED_ANONYMOUSLY") %}
-                                    {{ app.user.nombre }}                                    
+                                    {% elseif is_granted("ROLE_ADMIN") %}
+                                        ADMIN
                                     {% endif %}
                                     <span class="caret"></span>
                                 </a>
@@ -87,17 +87,26 @@
         <aside class="navigation">
             <nav>
                 <ul class="nav luna-nav">
+                {% if is_granted('ROLE_ADMIN') %}
+                <li class="nav-category">
+                    Administración
+                </li>
+                <li>
+                    <a href="{{path('area_new')}}">Nueva Area</a>
+                    <a href="{{path('perfil_new')}}">Nuevo Perfil</a>
+                    <a href="{{path('subarea_new')}}">Nueva SubArea</a>
+                    <a href="{{ path('preguntas_new')}}">Nueva preguntas</a>
+                    <a href="{{ path('usuario_manage')}}">Manejar Perfiles</a>
+                </li>
+                {% endif %}
                     <li class="nav-category">
                         Inicio
                     </li>
                     <li class="active">
-                        {% if is_granted('IS_AUTHENTICATED_ANONYMOUSLY') %}
-                        <a href="{{ path('usuario_manage')}}">Manejar Perfiles</a>
-                        {% elseif is_granted('ROLE_USER') %}
+                        {% if is_granted('ROLE_USER') %}
                         <a href=" {{ path('usuario_edit',{'id':app.user.id})}}">Perfil</a>
                         {% endif %}
                     </li>
-
                     <li>
                         <a href="#monitoring" data-toggle="collapse" aria-expanded="false">
                             Graficos
@@ -113,12 +122,12 @@
                     <li class="nav-category">
                         Test
                         <li>
-                            <a href="" style="color:#337ab7">Iniciar Nuevo</a>
+                            <a href="{{path('test')}}" style="color:#337ab7">Iniciar Nuevo</a>
                             <a href="">Mis test</a>
                         </li></li>
                         <li class="nav-category">
                              Areas
-                             <li><a href="{{path('area_new')}}">Nueva</a></li>
+                             
                             <li>
                                 <a href="#uielements" data-toggle="collapse" aria-expanded="false">
                                     Ver <span class="sub-nav-icon"> <i class="fa fa-play"></i> </span>
@@ -575,6 +584,15 @@
     ga('create', 'UA-4625583-2', 'webapplayers.com');
     ga('send', 'pageview');
 
+</script>
+
+
+<script>
+  $(document).ready(function() {
+    $('.datepicker-here').datepicker({
+      minDate: new Date()
+    })
+  });
 </script>
 {% endblock %}
 

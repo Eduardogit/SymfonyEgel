@@ -24,9 +24,14 @@ class TestController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $entities = $em->getRepository('testBundle:Test')->findAll();
-
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+        #echo "<pre>";
+        #print_r($user);
+        #echo "</pre>";
+        #die();
         return $this->render('testBundle:Test:index.html.twig', array(
             'entities' => $entities,
+            'user'     => $user,
         ));
     }
     /**

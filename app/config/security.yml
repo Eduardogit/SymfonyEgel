@@ -22,7 +22,7 @@ security:
                     developer:
                         password: $2a$07$m2L.9HVxC0Y0bSzFTK5DoeXyQOTRfhPk6uyox2gvGIktpCRmYph9m
                         #dev
-                        roles: 'ROLE_SUPER_ADMIN'
+                        roles: 'ROLE_ADMIN'
         Usuario:
             entity:
                 class: UsuarioBundle:Usuario
@@ -68,4 +68,10 @@ security:
     access_control:
     # NOTA: LAS RESTRICCIONES DE ACCESO TAMBIÉN ESTÁN DECLARADAS EN LOS CONTROLADORES
     - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-    - { path: ^/index/*, roles: [ROLE_USER,ROLE_SUPER_ADMIN,ROLE_ADMIN] }
+    - { path: ^/index/new/*, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+    - { path: ^/index/create/*, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+    - { path: ^/index/*, roles: [ROLE_USER,ROLE_ADMIN] }
+    - { path: ^/area/*, roles: [ROLE_ADMIN] }
+    - { path: ^/preguntas/*, roles: [ROLE_ADMIN] }
+    - { path: ^/subarea/*, roles: [ROLE_ADMIN] }
+    - { path: ^/reactivos/*, roles: [ROLE_ADMIN] }
