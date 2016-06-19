@@ -7,6 +7,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use testBundle\Entity\Test;
 use testBundle\Form\TestType;
+use UsuarioBundle\Entity\Usuario;
+use UsuarioBundle\Form\UsuarioType;
 
 /**
  * Test controller.
@@ -46,7 +48,19 @@ class TestController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $em->persist($entity);
+            $user = $this->get('security.token_storage')->getToken()->getUser();
+            echo "<pre>";
+            
+            echo "</pre>";
+            //die();
+            //$entity = $em->getRepository('UsuarioBundle:Usuario')->find($id);
+            $all =  $em->getRepository('UsuarioBundle:Usuario')->find(1);
+
+
+            $entity->setFechaInicio(new \DateTime('now'));
+            $entity->setEstatus('Abierto');
+            $entity->setUsuario($all);
+            $em->persist($all);
             $em->flush();
 
             return $this->redirect($this->generateUrl('test_show', array('id' => $entity->getId())));
@@ -85,8 +99,21 @@ class TestController extends Controller
     {
         $entity = new Test();
         $form   = $this->createCreateForm($entity);
+        $form->add('submit','submit', array(
+            'label' => 'Iniciar',
+            'attr'  => array('class' => 'btn btn-block btn-lg btn-default btn-warning ')
+        ));
+
+        $em = $this->getDoctrine()->getManager();
+
+        $areas = $em->getRepository('AreasBundle:Area')->findAll();
+        $subarea = $em->getRepository('AreasBundle:SubArea')->findAll();
+        $reactivos = $em->getRepository('AreasBundle:Reactivos')->findAll();
 
         return $this->render('testBundle:Test:new.html.twig', array(
+            'reactivos' => $reactivos,
+            'subareas' => $subarea,
+            'areas' => $areas,
             'entity' => $entity,
             'form'   => $form->createView(),
         ));
@@ -108,9 +135,17 @@ class TestController extends Controller
 
         $deleteForm = $this->createDeleteForm($id);
 
-        return $this->render('testBundle:Test:show.html.twig', array(
+        $entity = $em->getRepository('testBundle:Preguntas')->findAll($id);
+        $area = $em->getRepository('AreasBundle:Area')->findAll();
+        $subarea = $em->getRepository('AreasBundle:Area')->findAll();
+
+        echo "<pre>";
+        print_r($area);
+        echo "</pre>";
+        die();
+
+        return $this->render('testBundle:Test:examen.html.twig', array(
             'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),
         ));
     }
 

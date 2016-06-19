@@ -1,15 +1,82 @@
 {% extends '::baseAdmin.html.twig' %}
+{% block body %}
+{{parent()}}
+{% endblock %}
+{% block content %}
+{#{{parent()}}#}
+<section class="content">
+	<div class="container-fluid">
+		<div class="row">
+			<h1>Informacion del Examen</h1>
 
-{% block body -%}
-    <h1>Test creation</h1>
+			{{ form_start(form) }}
+			<div class="panel panel-filled panel-c-info">
+				<div class="panel-heading">
+					<div class="panel-tools">
+						<a class="panel-toggle"><i class="fa fa-chevron-up"></i></a>
+						<a class="panel-close"><i class="fa fa-times"></i></a>
+					</div>
+					Datos del examen
+				</div>
+				<div class="panel-body">
+					<div class="col-md-3">
+						<h6>Fecha de inicio</h6> {{ "now"|date("m/d/Y") }}
+					</div>
+					<div class="col-md-3">
+						<h6>Estatus</h6> Sin Comenzar
+					</div>
+					<div class="col-md-3">
+						<h6>Perfil</h6> {{app.user.perfil.nombre}} 
+					</div>
+					<div class="col-md-3">
+						<h6>Aspirante</h6> {{app.user.nombre}} 
+					</div>
+				</div>
+			</div>
+			<div class="panel panel-filled panel-c-info">
+				<div class="panel-heading">
+					<div class="panel-tools">
+						<a class="panel-toggle"><i class="fa fa-chevron-up"></i></a>
+						<a class="panel-close"><i class="fa fa-times"></i></a>
+					</div>
+					{{app.user.perfil.nombre}} 
+				</div>
+				<div class="panel-body">
+					<div class="col-md-3">
+						<h6>Areas</h6>
+						{% for area in areas %}
+							<p>{{area.nombre}}</p>						    
+						{% endfor %}
+					</div>
+					<div class="col-md-3">
+						<h6>Subareas</h6>
+						{% for subarea in subareas %}
+							<p>{{subarea.nombre}}</p>						    
+						{% endfor %}
+					</div>
+					<div class="col-md-3">
+						<h6>Parcial</h6>
+						{% for subarea in subareas %}
+							<p>{{subarea.calificacionParcial}}</p>						    
+						{% endfor %}
+					</div>
+					<div class="col-md-3">
+						<h6>Reactivos Totales</h6>
+						{% for reactivo in reactivos %}
+							<p>{{reactivo.reactivosMaximos}}</p>						    
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+			
 
-    {{ form(form) }}
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('test') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
+			{{ form_end(form) }}
+
+			<a class="btn btn-w-md btn-link" href="{{ path('test') }}">
+				Regresar a Informacion
+			</a>
+		</div>
+	</div>
+</section>
 {% endblock %}

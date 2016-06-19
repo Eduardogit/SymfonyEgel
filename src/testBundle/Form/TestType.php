@@ -15,11 +15,9 @@ class TestType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('fechaInicio')
-            ->add('fechaFin')
-            ->add('estatus','text',array('attr' => array('class'=> 'form-control',
-                'Value' =>'Sin Comenzar'
-                )))
+        ->add('fechaInicio', 'hidden')
+        ->add('fechaFin' ,'hidden')
+        ->add('estatus','hidden')
         ;
     }
     
