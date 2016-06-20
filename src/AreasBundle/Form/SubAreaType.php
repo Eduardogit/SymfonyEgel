@@ -15,16 +15,22 @@ class SubAreaType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nombre')
-            ->add('calificacionParcial')
+            ->add('nombre','text',array('attr' => array('class'=> 'form-control',
+                'placeholder' =>'Nombre de la Subarea')))
+            ->add('calificacionParcial',null,array('attr' => array('class'=> 'form-control',
+                'placeholder' =>'Calificacion')))
             ->add('area', 'entity', array(
                 'class' => 'AreasBundle:Area',
                 'property' => 'nombre',
-                ))
+                'attr' => array(
+                                'class'=> 'form-control',
+                                'placeholder' =>'Seleciona el Area')))
             ->add('perfil', 'entity', array(
                 'class' => 'AreasBundle:Perfil',
                 'property' => 'nombre',
-                ))
+                'attr' => array(
+                                'class'=> 'form-control',
+                                'placeholder' =>'Seleciona el Perfil')))
         ;
     }
     

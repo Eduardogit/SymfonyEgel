@@ -18,6 +18,7 @@ class PreguntasType extends AbstractType
             ->add('descripcion'  ,'text',array(
                                         'attr' => array(
                                                 'class'=> 'form-control',
+                                                'maxlength'=> '250',
                                                 'placeholder' =>'ingresa la descripcion de la pregunta'
                 )))
             ->add('pregunta'  ,'text',array(

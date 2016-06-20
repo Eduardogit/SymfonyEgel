@@ -1,1 +1,16 @@
-examen
+{% for pregunta in preguntas %}
+
+	<p>{{pregunta.descripcion}}</p>
+    <h1>	{{pregunta.pregunta}}  </h1>
+{% for opcion in opciones %}
+	{% for opciontmp in opcion %}
+
+		<input type="radio" name="{{opciontmp.pregunta.id}}" value="{{opciontmp.opcion}}">{{opciontmp.opcion}} 
+		<br>
+	{% endfor %}
+{% endfor %}
+
+
+{% endfor %}
+
+

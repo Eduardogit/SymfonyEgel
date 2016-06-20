@@ -1,9 +1,17 @@
-{% extends '::base.html.twig' %}
+{% extends '::baseAdmin.html.twig' %}
+{% block body %}
+{{parent()}}
+{% endblock %}
+{% block content %}
 
-{% block body -%}
-    <h1>SubArea</h1>
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <h1>Perfil</h1>
 
-    <table class="record_properties">
+            <div class="table-responsive">
+
+                <table class="table records_list">
         <tbody>
             <tr>
                 <th>Id</th>
@@ -16,17 +24,16 @@
         </tbody>
     </table>
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('subarea') }}">
-            Back to the list
+        <a class="btn btn-w-md btn-accent" href="{{ path('subarea') }}">
+            Regresar
         </a>
-    </li>
-    <li>
-        <a href="{{ path('subarea_edit', { 'id': entity.id }) }}">
+        <a class="btn btn-w-md btn-primary" href="{{ path('subarea_edit', { 'id': entity.id }) }}">
             Edit
         </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
+    {{ form_widget(delete_form.submit, { 'attr': {'class': 'btn btn-w-md btn-accent', 'type': 'button'} }) }}
 </ul>
+</div>
+</div>
+</div>
+</section>
 {% endblock %}

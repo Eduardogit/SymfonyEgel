@@ -12,6 +12,7 @@ testBundle\Entity\Test:
             type: datetime
         fechaFin:
             type: datetime
+            nullable: true
         estatus:
             type: string
             length: '10'
@@ -22,7 +23,6 @@ testBundle\Entity\Test:
                 name: areasCompletadas_id
                 referencedColumnName: id
                 onDelete: CASCADE
-    oneToOne:
         usuario:
             targetEntity: UsuarioBundle\Entity\Usuario
             joinColumn:

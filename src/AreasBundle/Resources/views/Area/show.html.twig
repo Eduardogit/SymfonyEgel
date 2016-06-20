@@ -1,9 +1,16 @@
-{% extends '::base.html.twig' %}
-
-{% block body -%}
+{% extends '::baseAdmin.html.twig' %}
+{% block body %}
+    {{parent()}}
+{% endblock %}
+{% block content %}
+  <section class="content">
+   <div class="container-fluid">
+    <div class="row">
     <h1>Area</h1>
 
-    <table class="record_properties">
+    <div class="table-responsive">
+
+        <table class="table records_list">
         <tbody>
             <tr>
                 <th>Id</th>
@@ -15,18 +22,15 @@
             </tr>
         </tbody>
     </table>
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('area') }}">
-            Back to the list
+</div>
+        <a class="btn btn-w-md btn-accent" href="{{ path('area') }}">
+            Regresar
         </a>
-    </li>
-    <li>
-        <a href="{{ path('area_edit', { 'id': entity.id }) }}">
-            Edit
+        <a   class="btn btn-w-md btn-primary"  href="{{ path('area_edit', { 'id': entity.id }) }}">
+            Editar
         </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
-{% endblock %}
+        {{ form_widget(delete_form.submit, { 'attr': {'class': 'btn btn-w-md btn-accent', 'type': 'button'} }) }}
+</div>
+</div>
+</section>
+    {% endblock %}

@@ -182,7 +182,7 @@ class Preguntas
      * @param \testBundle\Entity\Opciones $opciones
      * @return Preguntas
      */
-    public function setOpciones(\testBundle\Entity\Opciones $opciones = null)
+    public function setOpciones( $opciones = null)
     {
         $this->opciones = $opciones;
 

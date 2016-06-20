@@ -18,6 +18,7 @@ class TestType extends AbstractType
         ->add('fechaInicio', 'hidden')
         ->add('fechaFin' ,'hidden')
         ->add('estatus','hidden')
+        ->add('areasCompletadas','hidden')
         ;
     }
     

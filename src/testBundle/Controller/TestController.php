@@ -43,24 +43,23 @@ class TestController extends Controller
     public function createAction(Request $request)
     {
         $entity = new Test();
+        $usuario = new Usuario();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $user = $this->get('security.token_storage')->getToken()->getUser();
-            echo "<pre>";
-            
-            echo "</pre>";
+            $em = $this->get('doctrine.orm.default_entity_manager');
+            $user = $this->container->get('security.token_storage')->getToken()->getUser();
+            //echo "<pre>";
+            //print_r($this->getUser());
+            //echo "</pre>";
             //die();
-            //$entity = $em->getRepository('UsuarioBundle:Usuario')->find($id);
-            $all =  $em->getRepository('UsuarioBundle:Usuario')->find(1);
 
 
             $entity->setFechaInicio(new \DateTime('now'));
             $entity->setEstatus('Abierto');
-            $entity->setUsuario($all);
-            $em->persist($all);
+            $entity->setUsuario($user);
+            $em->persist($entity);
             $em->flush();
 
             return $this->redirect($this->generateUrl('test_show', array('id' => $entity->getId())));
@@ -127,25 +126,29 @@ class TestController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('testBundle:Test')->find($id);
+        $test = $em->getRepository('testBundle:Test')->find($id);
 
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Test entity.');
+        if (!$test) {
+            throw $this->createNotFoundException('Unable to find Test test.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
 
-        $entity = $em->getRepository('testBundle:Preguntas')->findAll($id);
+        $preguntas = $em->getRepository('testBundle:Preguntas')->findAll();
+        foreach ($preguntas as $pregunta ) {
+            $opciones[] = $em->getRepository('testBundle:Opciones')->findBy(array(
+                'pregunta' => $pregunta->getId()));
+        }
+
         $area = $em->getRepository('AreasBundle:Area')->findAll();
         $subarea = $em->getRepository('AreasBundle:Area')->findAll();
 
-        echo "<pre>";
-        print_r($area);
-        echo "</pre>";
-        die();
 
         return $this->render('testBundle:Test:examen.html.twig', array(
-            'entity'      => $entity,
+            'preguntas'  => $preguntas,
+            'opciones'      => $opciones,
+            'area'      => $area,
+            'subarea'      => $subarea,
         ));
     }
 

@@ -55,31 +55,7 @@ class Opciones
     /**
      * @var \AreasBundle\Entity\SubArea
      */
-    private $subarea;
-
-
-    /**
-     * Set subarea
-     *
-     * @param \AreasBundle\Entity\SubArea $subarea
-     * @return Opciones
-     */
-    public function setSubarea(\AreasBundle\Entity\SubArea $subarea = null)
-    {
-        $this->subarea = $subarea;
-
-        return $this;
-    }
-
-    /**
-     * Get subarea
-     *
-     * @return \AreasBundle\Entity\SubArea 
-     */
-    public function getSubarea()
-    {
-        return $this->subarea;
-    }
+    
     /**
      * @var \testBundle\Entity\Preguntas
      */

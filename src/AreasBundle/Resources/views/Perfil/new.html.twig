@@ -1,15 +1,24 @@
-{% extends '::base.html.twig' %}
+{% extends '::baseAdmin.html.twig' %}
+{% block body %}
+{{parent()}}
+{% endblock %}
+{% block content %}
 
-{% block body -%}
-    <h1>Perfil creation</h1>
+<section class="content">
+	<div class="container-fluid">
+		<div class="row">
+			<h1>Perfil creation</h1>
 
-    {{ form(form) }}
+			{{ form(form) }}
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('perfil') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
+			<ul class="record_actions">
+				<li>
+					<a href="{{ path('perfil') }}">
+						Back to the list
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</section>
 {% endblock %}

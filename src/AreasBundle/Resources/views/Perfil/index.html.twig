@@ -1,12 +1,17 @@
-{% extends '::base.html.twig' %}
+{% extends '::baseAdmin.html.twig' %}
+{% block body %}
+{{parent()}}
+{% endblock %}
+{% block content %}
 
-{% block body -%}
-    <h1>Perfil list</h1>
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="table-responsive">
 
-    <table class="records_list">
+                <table class="table records_list">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Nombre</th>
                 <th>Actions</th>
             </tr>
@@ -14,7 +19,6 @@
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('perfil_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
                 <td>{{ entity.nombre }}</td>
                 <td>
                 <ul>
@@ -31,11 +35,11 @@
         </tbody>
     </table>
 
-        <ul>
-        <li>
-            <a href="{{ path('perfil_new') }}">
-                Create a new entry
+            <a class="btn btn-w-md btn-accent" href="{{ path('perfil_new') }}">
+                Crear nuevo perfil
             </a>
-        </li>
-    </ul>
-    {% endblock %}
+    </div>
+    </div>
+    </div>
+    </section>
+{% endblock %}

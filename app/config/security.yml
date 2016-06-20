@@ -54,7 +54,7 @@ security:
                 target: /login
             remember_me:
                 key: holysoymuyseguro
-                lifetime: 1800
+                lifetime: 601800
 
         main:
             http_basic: ~
@@ -75,3 +75,4 @@ security:
     - { path: ^/preguntas/*, roles: [ROLE_ADMIN] }
     - { path: ^/subarea/*, roles: [ROLE_ADMIN] }
     - { path: ^/reactivos/*, roles: [ROLE_ADMIN] }
+    - { path: ^/perfil/*, roles: [ROLE_ADMIN] }

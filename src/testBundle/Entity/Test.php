@@ -120,7 +120,7 @@ class Test
      * @param \UsuariosBundle\Entity\Test $usuario
      * @return Test
      */
-    public function setUsuario(\UsuariosBundle\Entity\Test $usuario = null)
+    public function setUsuario(\UsuarioBundle\Entity\Usuario $usuario = null)
     {
         $this->usuario = $usuario;
 

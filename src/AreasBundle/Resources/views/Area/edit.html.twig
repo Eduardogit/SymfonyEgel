@@ -1,16 +1,20 @@
-{% extends '::base.html.twig' %}
+{% extends '::baseAdmin.html.twig' %}
+{% block body %}
+{{parent()}}
+{% endblock %}
+{% block content %}
 
-{% block body -%}
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
     <h1>Area edit</h1>
 
     {{ form(edit_form) }}
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('area') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+    <a class="btn btn-default btn-w-md" href="{{ path('area') }}">
+        Regresar
+    </a>
+    {{ form_widget(delete_form.submit, { 'attr': {'class': 'btn btn-w-md btn-accent', 'type': 'button'} }) }}
+</div>
+</div>
+</section>
 {% endblock %}

@@ -1,12 +1,17 @@
-{% extends '::base.html.twig' %}
+{% extends '::baseAdmin.html.twig' %}
+{% block body %}
+{{parent()}}
+{% endblock %}
+{% block content %}
 
-{% block body -%}
-    <h1>SubArea list</h1>
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="table-responsive">
 
-    <table class="records_list">
+                <table class="table records_list">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Nombre</th>
                 <th>relacion</th>
                 <th>Actions</th>
@@ -15,7 +20,6 @@
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('subarea_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
                 <td>{{ entity.nombre }}</td>
                 <td>{{ entity.area.nombre }}</td>
                 <td>
@@ -32,12 +36,13 @@
         {% endfor %}
         </tbody>
     </table>
-
-        <ul>
-        <li>
-            <a href="{{ path('subarea_new') }}">
-                Create a new entry
+            <a class="btn btn-w-md btn-primary" href="{{ path('subarea_new') }}">
+            Crear Nueva
             </a>
-        </li>
-    </ul>
+</div>
+</div>
+</div>
+</section>
     {% endblock %}
+
+
