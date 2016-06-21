@@ -29,6 +29,23 @@ class Test
      */
     private $estatus;
 
+    /**
+     * @var \testBundle\Entity\AreasCompletadas
+     */
+    private $areasCompletadas;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $usuario;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->usuario = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
@@ -108,39 +125,6 @@ class Test
     {
         return $this->estatus;
     }
-    /**
-     * @var \UsuariosBundle\Entity\Test
-     */
-    private $usuario;
-
-
-    /**
-     * Set usuario
-     *
-     * @param \UsuariosBundle\Entity\Test $usuario
-     * @return Test
-     */
-    public function setUsuario(\UsuarioBundle\Entity\Usuario $usuario = null)
-    {
-        $this->usuario = $usuario;
-
-        return $this;
-    }
-
-    /**
-     * Get usuario
-     *
-     * @return \UsuariosBundle\Entity\Test 
-     */
-    public function getUsuario()
-    {
-        return $this->usuario;
-    }
-    /**
-     * @var \testBundle\Entity\AreasCompletadas
-     */
-    private $areasCompletadas;
-
 
     /**
      * Set areasCompletadas
@@ -163,5 +147,49 @@ class Test
     public function getAreasCompletadas()
     {
         return $this->areasCompletadas;
+    }
+
+    /**
+     * Add usuario
+     *
+     * @param \UsuarioBundle\Entity\Usuario $usuario
+     * @return Test
+     */
+    public function addUsuario(\UsuarioBundle\Entity\Usuario $usuario)
+    {
+        $this->usuario[] = $usuario;
+
+        return $this;
+    }
+
+    /**
+     * Remove usuario
+     *
+     * @param \UsuarioBundle\Entity\Usuario $usuario
+     */
+    public function removeUsuario(\UsuarioBundle\Entity\Usuario $usuario)
+    {
+        $this->usuario->removeElement($usuario);
+    }
+
+    /**
+     * Get usuario
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getUsuario()
+    {
+        return $this->usuario;
+    }
+    /**
+     * Get usuario
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function setUsuario(\UsuarioBundle\Entity\Usuario $usuario)
+    {
+        $this->usuario = $usuario;
+
+        return $this;
     }
 }

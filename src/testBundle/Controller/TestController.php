@@ -125,30 +125,30 @@ class TestController extends Controller
     public function showAction($id)
     {
         $em = $this->getDoctrine()->getManager();
-
         $test = $em->getRepository('testBundle:Test')->find($id);
+
 
         if (!$test) {
             throw $this->createNotFoundException('Unable to find Test test.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
-
         $preguntas = $em->getRepository('testBundle:Preguntas')->findAll();
         foreach ($preguntas as $pregunta ) {
             $opciones[] = $em->getRepository('testBundle:Opciones')->findBy(array(
                 'pregunta' => $pregunta->getId()));
         }
 
+        $key = ['a','b','c','d'];
         $area = $em->getRepository('AreasBundle:Area')->findAll();
-        $subarea = $em->getRepository('AreasBundle:Area')->findAll();
-
-
+        $subarea = $em->getRepository('AreasBundle:SubArea')->findAll();
         return $this->render('testBundle:Test:examen.html.twig', array(
             'preguntas'  => $preguntas,
             'opciones'      => $opciones,
             'area'      => $area,
             'subarea'      => $subarea,
+            'key'      => $key,
+            'test'      => $test,
         ));
     }
 
@@ -207,6 +207,10 @@ class TestController extends Controller
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Test entity.');
         }
+        echo "<pre>";
+        print_r($request);
+        echo "</pre>";
+        die();
 
         $deleteForm = $this->createDeleteForm($id);
         $editForm = $this->createEditForm($entity);

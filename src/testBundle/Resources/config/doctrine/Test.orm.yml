@@ -16,7 +16,7 @@ testBundle\Entity\Test:
         estatus:
             type: string
             length: '10'
-    oneToOne:
+    manyToOne:
         areasCompletadas:
             targetEntity: AreasCompletadas
             joinColumn:

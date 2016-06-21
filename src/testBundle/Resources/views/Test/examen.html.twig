@@ -1,16 +1,26 @@
-{% for pregunta in preguntas %}
 
-	<p>{{pregunta.descripcion}}</p>
-    <h1>	{{pregunta.pregunta}}  </h1>
-{% for opcion in opciones %}
-	{% for opciontmp in opcion %}
-
-		<input type="radio" name="{{opciontmp.pregunta.id}}" value="{{opciontmp.opcion}}">{{opciontmp.opcion}} 
-		<br>
+<form action="{{ path('test_update', { 'id': test.id })  }}" method="post" >
+	{% for areaPrincipal in area %}
+		{% for sub in subarea %}
+			{% if sub.area.id == areaPrincipal.id %}
+				{% for pregunta in preguntas %}
+					{% if pregunta.subarea.id == sub.id %}
+						<p>{{pregunta.descripcion}}</p>
+						<h1>	{{pregunta.pregunta}}  </h1>  
+						<h3>{{areaPrincipal.nombre}}  > {{sub.nombre}}</h3>
+						{% for opcion in opciones %}
+							{% for k,opciontmp in opcion %}
+								{% if opciontmp.pregunta.pregunta == pregunta.pregunta %}
+									{{key[k]}}<input type="radio" name="{{opciontmp.pregunta.id}}" value="{{opciontmp.id}}" required="true">{{opciontmp.opcion}} 
+									<br>
+								{% endif %}
+							{% endfor %}
+						{% endfor %}
+					{% endif %}
+				{% endfor %}
+			{% endif %}
+		{% endfor %}
 	{% endfor %}
-{% endfor %}
-
-
-{% endfor %}
-
+	<input type="submit" />
+</form>
 
