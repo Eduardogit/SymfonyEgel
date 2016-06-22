@@ -53,8 +53,10 @@ class PreguntasController extends Controller
             foreach ($entity->getOpciones() as $key ) {
                 $opcionEntity=new Opciones();
                 $opcion = $key->getOpcion();
+                $valor = $key->getValor();
                 $opcionEntity->setPregunta($entity);
                 $opcionEntity->setOpcion($opcion);
+                $opcionEntity->setValor($valor);
                 $em->persist($opcionEntity);
                 $em->flush();
             }

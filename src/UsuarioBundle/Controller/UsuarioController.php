@@ -32,11 +32,17 @@ class UsuarioController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('UsuarioBundle:Usuario')->findAll();
+        $user = $this->container->get('security.token_storage')->getToken()->getUser();
+
+        $test = $em->getRepository('testBundle:Test')->findBy(array('usuario' =>$user));
+        //echo "<pre>";
+        //print_r($test);
+        //echo "<pre>";
+        //die();
 
         
         return $this->render('UsuarioBundle:Usuario:index.html.twig', array(
-            'entities' => $entities,
+            'test' => $test,
         ));
     }
     /**

@@ -21,6 +21,17 @@ class OpcionesType extends AbstractType
             ->add('opcion','text',array('attr' => array('class'=> 'form-control',
                 'placeholder' =>'ingresa una opcion a la pregunta'
                 )))
+            ->add('valor','choice',array(
+                'choices'=>array(
+                    'a' => 'a',
+                    'b' => 'b',
+                    'c' => 'c',
+                    'd' => 'd',
+                    ),
+                'attr' => array(
+                    'class' => 'form-control'
+                    )
+                ))
             
         ;
     }

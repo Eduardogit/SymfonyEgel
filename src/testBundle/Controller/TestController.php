@@ -10,6 +10,10 @@ use testBundle\Form\TestType;
 use UsuarioBundle\Entity\Usuario;
 use UsuarioBundle\Form\UsuarioType;
 
+
+use testBundle\Entity\SetRespuestas;
+use testBundle\Form\SetRespuestasType;
+
 /**
  * Test controller.
  *
@@ -207,26 +211,33 @@ class TestController extends Controller
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Test entity.');
         }
-        echo "<pre>";
-        print_r($request);
-        echo "</pre>";
-        die();
 
-        $deleteForm = $this->createDeleteForm($id);
-        $editForm = $this->createEditForm($entity);
-        $editForm->handleRequest($request);
 
-        if ($editForm->isValid()) {
+        //
+        //RECORRE EL REQUEST Y BUSA LA OPCION POR EL ID
+        //DEPUES INSERTA EN LA ENTIDAD DE SET DE RESPUESTAS
+        //
+    
+        $entity->setEstatus('Realizando');
+        $user = $this->container->get('security.token_storage')->getToken()->getUser();
+
+        $opciones = $this->getRequest()->request->all();
+        $cont = 0;
+        foreach ($opciones as $opcion) {
+            $cont++;
+            $setRespuestas = new SetRespuestas();
+            $entityOpcion = $em->getRepository('testBundle:Opciones')->find($opcion);
+            $setRespuestas->setTest($entity);
+            $setRespuestas->setOpcion($entityOpcion);
+            $em->persist($setRespuestas);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('test_edit', array('id' => $id)));
         }
+    
 
-        return $this->render('testBundle:Test:edit.html.twig', array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        ));
+
+               return $this->redirect($this->generateUrl('usuario'));
+
     }
     /**
      * Deletes a Test entity.

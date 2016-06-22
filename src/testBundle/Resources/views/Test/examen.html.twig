@@ -11,6 +11,7 @@
 						{% for opcion in opciones %}
 							{% for k,opciontmp in opcion %}
 								{% if opciontmp.pregunta.pregunta == pregunta.pregunta %}
+
 									{{key[k]}}<input type="radio" name="{{opciontmp.pregunta.id}}" value="{{opciontmp.id}}" required="true">{{opciontmp.opcion}} 
 									<br>
 								{% endif %}

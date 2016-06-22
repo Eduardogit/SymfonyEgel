@@ -11,6 +11,10 @@ testBundle\Entity\Opciones:
         opcion:
             type: string
             length: 255
+        valor:
+            type: string
+            length: 10
+            nullable: true
     manyToOne:
         pregunta:
             targetEntity: Preguntas

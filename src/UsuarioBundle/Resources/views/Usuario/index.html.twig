@@ -9,7 +9,10 @@
         <h1>Panel de administración</h1>
         <div class="container-fluid">
         	<div class="row">
-			
+            {% for t in test %}
+                {{dump(t)}}
+                
+            {% endfor %}
         		<div class="col-lg-3 col-md-7">
         		<h1 ><small> Examenes anteriores</small></h1>
                         <div class="panel panel-filled">

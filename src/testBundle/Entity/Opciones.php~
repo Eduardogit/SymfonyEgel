@@ -89,4 +89,32 @@ class Opciones
     
    
    
+    /**
+     * @var string
+     */
+    private $valor;
+
+
+    /**
+     * Set valor
+     *
+     * @param string $valor
+     * @return Opciones
+     */
+    public function setValor($valor)
+    {
+        $this->valor = $valor;
+
+        return $this;
+    }
+
+    /**
+     * Get valor
+     *
+     * @return string 
+     */
+    public function getValor()
+    {
+        return $this->valor;
+    }
 }
