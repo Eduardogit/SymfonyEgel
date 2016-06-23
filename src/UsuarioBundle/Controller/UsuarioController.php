@@ -1,7 +1,7 @@
 <?php
 
 namespace UsuarioBundle\Controller;
-
+use \Doctrine\ORM\EntityNotFoundException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -40,10 +40,13 @@ class UsuarioController extends Controller
         //echo "<pre>";
         //die();
 
-        
-        return $this->render('UsuarioBundle:Usuario:index.html.twig', array(
-            'test' => $test,
-        ));
+        try{
+            return $this->render('UsuarioBundle:Usuario:index.html.twig', array(
+                'test' => $test,
+            ));
+        }catch(\Doctrine\ORM\EntityNotFoundException $ex){
+            return $this->render('UsuarioBundle:Usuario:index.html.twig');
+        }
     }
     /**
      * Creates a new Usuario entity.

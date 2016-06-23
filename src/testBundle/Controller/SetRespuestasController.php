@@ -19,15 +19,36 @@ class SetRespuestasController extends Controller
      * Lists all SetRespuestas entities.
      *
      */
-    public function indexAction()
+    public function indexAction($id)
     {
         $em = $this->getDoctrine()->getManager();
+        $test = $em->getRepository('testBundle:Test')->find($id);
+        $setRespuestas = $em->getRepository('testBundle:SetRespuestas')->findBy(array('test'=>$test));
+        foreach ($setRespuestas as $s ) {
+        echo "<pre>";
+        $opciones =  $em->getRepository('testBundle:Opciones')->find($s->getOpcion()->getId());
 
-        $entities = $em->getRepository('testBundle:SetRespuestas')->findAll();
+        print_r($opciones->getPregunta()->getRespuestaCorrecta());
+        print_r($opciones->getPregunta()->getId());
+        //var_dump($s->getOpcion()->getOpcion());
 
-        return $this->render('testBundle:SetRespuestas:index.html.twig', array(
-            'entities' => $entities,
-        ));
+        echo "</pre>";
+            
+        }
+        die();
+
+
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find SetRespuestas entity.');
+        }
+
+        $deleteForm = $this->createDeleteForm($id);
+
+        return $this->render('testBundle:SetRespuestas:show.html.twig', array(
+            'entity'      => $entity,
+            'delete_form' => $deleteForm->createView(),
+                ));
     }
     /**
      * Creates a new SetRespuestas entity.

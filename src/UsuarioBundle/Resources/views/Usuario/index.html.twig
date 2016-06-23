@@ -9,23 +9,30 @@
         <h1>Panel de administración</h1>
         <div class="container-fluid">
         	<div class="row">
-            {% for t in test %}
-                {{dump(t)}}
-                
-            {% endfor %}
-        		<div class="col-lg-3 col-md-7">
-        		<h1 ><small> Examenes anteriores</small></h1>
+                <h1 ><small> Examenes anteriores</small></h1>
+            {% for key,t in test|sort %}
+                <div class="col-lg-3 col-md-7">
                         <div class="panel panel-filled">
                             <div class="panel-body">
-                                <h2 class="m-b-none">
-                                    1er Examen
+                                <h2 style="color:#f5a212" class="m-b-none">
+                                <a href="{{ path('test_resultados', { 'id': t.id }) }}">
+                                    Examen  #{{key+1}}
+                                </a>
                                 </h2>
-                                <span>Porcentaje</span>
-                                <div class="small">% 80</div>
-                                <div class="slight m-t-sm"><i class="fa fa-clock-o"> </i> Terminado: <span class="c-white">05/05/2016 10:22pm</span>  </div>
+                                <div class="col-md-6">
+                                    <span>Porcentaje</span>
+                                    <div class="small">% 80</div>
+                                </div>
+                                <div class="col-md-6">
+                                    <span>Estatus</span>
+                                    <div class="small">{{t.estatus}}</div>                             
+                                </div>
+                                <div class="slight m-t-sm"><i class="fa fa-clock-o"> </i> Fecha inicio: <span class="c-white">{{t.fechaInicio |date('Y-m-d H:i:s')}}</span>  </div>
+                                <div class="slight m-t-sm"><i class="fa fa-clock-o"> </i> Fecha Fin: <span class="c-white">{{t.fechaFin|date('Y-m-d H:i:s')}}</span>  </div>
                             </div>
                         </div>
                     </div>
+            {% endfor %}
 
 				<div class="col-md-12">
         		<h1 ><small>Examen en curso</small></h1>

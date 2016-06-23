@@ -21,3 +21,6 @@ test_test:
 test_homepage:
     path:     /hello/{name}
     defaults: { _controller: testBundle:Default:index }
+test_resultados:
+    path:     /{id}/resultados
+    defaults: { _controller: testBundle:SetRespuestas:index }
