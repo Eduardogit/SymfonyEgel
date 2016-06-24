@@ -55,8 +55,11 @@ class UsuarioController extends Controller
                 ));
         }else if($user->getRoles()[0] == 'ROLE_USER'){
             $test = $em->getRepository('testBundle:Test')->findBy(array('usuario' =>$user));
+            $areas = $em->getRepository('AreasBundle:Area')->findAll();
+
                 return $this->render('UsuarioBundle:Usuario:index.html.twig', array(
                     'test' => $test,
+                    'areas' => $areas,
                    ));
         }
         

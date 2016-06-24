@@ -24,3 +24,9 @@ test_homepage:
 test_resultados:
     path:     /{id}/resultados
     defaults: { _controller: testBundle:SetRespuestas:index }
+test_realizados:
+    path:     /realizados
+    defaults: { _controller: testBundle:Test:realizados }
+test_seguir:
+    path:     /{id}/continuar
+    defaults: { _controller: testBundle:Test:keepTest }

@@ -5,76 +5,69 @@
 {% block content %}
 {#{{parent()}}#}
 
-    <section class="content">
-        <h1>Panel de administración</h1>
-        <div class="container-fluid">
-        	<div class="row">
-                <h1 ><small> Examenes anteriores</small></h1>
-            {% for key,t in test|sort %}
-                <div class="col-lg-3 col-md-7">
-                        <div class="panel panel-filled">
-                            <div class="panel-body">
-                                <h2 style="color:#f5a212" class="m-b-none">
-                                <a href="{{ path('test_resultados', { 'id': t.id }) }}">
-                                    Examen  #{{key+1}}
-                                </a>
-                                </h2>
-                                <div class="col-md-6">
-                                    <span>Porcentaje</span>
-                                    <div class="small">% 80</div>
-                                </div>
-                                <div class="col-md-6">
-                                    <span>Estatus</span>
-                                    <div class="small">{{t.estatus}}</div>                             
-                                </div>
-                                <div class="slight m-t-sm"><i class="fa fa-clock-o"> </i> Fecha inicio: <span class="c-white">{{t.fechaInicio |date('Y-m-d H:i:s')}}</span>  </div>
-                                <div class="slight m-t-sm"><i class="fa fa-clock-o"> </i> Fecha Fin: <span class="c-white">{{t.fechaFin|date('Y-m-d H:i:s')}}</span>  </div>
-                            </div>
+<section class="content">
+    <h1>Panel de administración</h1>
+    <div class="container-fluid">
+       <div class="row">
+        <h1 ><small> Examenes anteriores</small></h1>
+        {% for key,t in test|sort %}
+        <div class="col-lg-3 col-md-7">
+            <div class="panel panel-filled">
+                <div class="panel-body">
+                    <h2 style="color:#f5a212" class="m-b-none">
+                        {% if t.estatus == 'Terminado'%}
+                            <a href="{{ path('test_resultados', { 'id': t.id }) }}">
+                        {% elseif ( t.estatus == 'Abierto') or ( t.estatus == 'Realizando' ) %}
+                            <a href="{{ path('test_realizados') }}">                                
+                        {% endif %}
+                            Examen  #{{key+1}}
+                        </a>
+                    </h2>
+                    <div class="col-md-6">
+                        <span>Porcentaje</span>
+                        <div class="small">% 80</div>
+                    </div>
+                    <div class="col-md-6">
+                        <span>Estatus</span>
+                        <div class="small">{{t.estatus}}</div>                             
+                    </div>
+                    <div class="slight m-t-sm"><i class="fa fa-clock-o"> </i> Fecha inicio: <span class="c-white">{{t.fechaInicio |date('Y-m-d H:i:s')}}</span>  </div>
+                    <div class="slight m-t-sm"><i class="fa fa-clock-o"> </i> Fecha Fin: <span class="c-white">{{t.fechaFin|date('Y-m-d H:i:s')}}</span>  </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+        <div class="col-md-12">
+          <h1 ><small>Examen en curso</small></h1>
+          <h2 style="color:#f5a212">Examen #1</h2>	
+      </div>
+
+
+      <div class="col-md-12">
+        <div class="v-timeline vertical-container">
+            {% for area in areas %}
+                <div class="vertical-timeline-block">
+                    <div class="vertical-timeline-icon">
+                        <i class="fa fa-calendar"></i>
+                    </div>
+                    <div class="vertical-timeline-content">
+                        <div class="p-sm">
+                            <span class="vertical-date pull-right">
+                                Sabado
+                                <small>1:00 PM</small>
+                            </span>
+                            <h2>{{area.nombre}}</h2>
+                            <p>Area resuelta<i class="fa fa-check"></i></p>
                         </div>
                     </div>
+                </div>
             {% endfor %}
-
-				<div class="col-md-12">
-        		<h1 ><small>Examen en curso</small></h1>
-        		<h2 style="color:#f5a212">Examen #1</h2>	
-        		</div>
-
-        		<div class="col-md-12">
-        		<div class="v-timeline vertical-container">
-					<div class="vertical-timeline-block">
-    				<div class="vertical-timeline-icon">
-    					<i class="fa fa-calendar"></i>
-    				</div>
-        			<div class="vertical-timeline-content">
-						<div class="p-sm">
-							<span class="vertical-date pull-right">
-								Sabado
-								<small>1:00 PM</small>
-							</span>
-							<h2>Matematicas</h2>
-							<p>Area resuelta<i class="fa fa-check"></i></p>
-						</div>
-        			</div>
-					</div>
-					<div class="vertical-timeline-block">
-    				<div class="vertical-timeline-icon">
-    					<i class="fa fa-calendar"></i>
-    				</div>
-        			<div class="vertical-timeline-content">
-						<div class="p-sm">
-							<span class="vertical-date pull-right">
-								
-							</span>
-							<h2>Software</h2>
-							<p>Area Pendiente</p>
-						</div>
-        			</div>
-					</div>
-        		</div>
-        		</div>
-
-        	</div>
         </div>
+    </div>
 
-    </section>
+</div>
+</div>
+
+</section>
 {% endblock %}

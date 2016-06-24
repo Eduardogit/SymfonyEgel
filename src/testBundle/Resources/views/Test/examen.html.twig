@@ -1,27 +1,104 @@
+{% extends '::baseAdmin.html.twig' %}
+{% block body %}
+{{parent()}}
+{% endblock %}
+{% block nav %}{% endblock %}
+{% block content %}
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+
 
 <form action="{{ path('test_update', { 'id': test.id })  }}" method="post" >
-	{% for areaPrincipal in area %}
-		{% for sub in subarea %}
-			{% if sub.area.id == areaPrincipal.id %}
-				{% for pregunta in preguntas %}
-					{% if pregunta.subarea.id == sub.id %}
-						<p>{{pregunta.descripcion}}</p>
-						<h1>	{{pregunta.pregunta}}  </h1>  
-						<h3>{{areaPrincipal.nombre}}  > {{sub.nombre}}</h3>
-						{% for opcion in opciones %}
-							{% for k,opciontmp in opcion %}
-								{% if opciontmp.pregunta.pregunta == pregunta.pregunta %}
+<input class="btn btn-lg btn-warning" type="submit" value="Pausar" />
+<input class="btn btn-lg btn-success" type="submit" value="Terminar" />
+<div class="col-md-6 block-center"><h4 style="color:#f6a821;">Inicio {{date('now')|date('H:M:s')}}</h4></div> 
+<div class="col-md-6 block-center"><h4 style="color:#f6a821;">Cronometro {{date('now')|date('H:M:s')}}</h4></div> 
+<div class="row m-t-lg">
+                <div class="col-lg-12">
+                    <div class="tabs-container">
 
-									{{key[k]}}<input type="radio" name="{{opciontmp.pregunta.id}}" value="{{opciontmp.id}}" required="true">{{opciontmp.opcion}} 
-									<br>
-								{% endif %}
-							{% endfor %}
-						{% endfor %}
-					{% endif %}
-				{% endfor %}
-			{% endif %}
-		{% endfor %}
-	{% endfor %}
-	<input type="submit" />
+                        <div class="tabs-left">
+                            <ul class="nav nav-tabs">
+                            {% for key,areaPrincipal in area %}
+	                            {% if key == 0 %}
+	                                <li class="active"><a data-toggle="tab" href="#tab-{{key}}" aria-expanded="true"> {{areaPrincipal.nombre}}</a></li>
+	                            {% else %}
+	                                <li class=""><a data-toggle="tab" href="#tab-{{key}}" aria-expanded="true"> {{areaPrincipal.nombre}}</a></li>
+	                            {% endif %}
+                            {% endfor %}
+                            </ul>
+                            <div class="tab-content ">
+                            {% for key,areaPrincipal in area %}
+                            {% if key  == 0 %}
+                                <div id="tab-{{key}}" class="tab-pane active">
+                                    <div class="panel-body">
+                                       {% for sub in subarea %}
+											{% if sub.area.id == areaPrincipal.id %}
+												{% for pregunta in preguntas %}
+													{% if pregunta.subarea.id == sub.id %}
+														<h1>	{{pregunta.pregunta}}  </h1>  
+														<p>{{pregunta.descripcion}}</p>
+														<h3>{{areaPrincipal.nombre}}  > {{sub.nombre}}</h3>
+														{% for opcion in opciones %}
+															{% for k,opciontmp in opcion %}
+																{% if opciontmp.pregunta.pregunta == pregunta.pregunta %}
+																	<span>{{insiso[k]}})</span><input type="radio" name="{{opciontmp.pregunta.id}}" value="{{opciontmp.id}}" required="true">{{opciontmp.opcion}} 
+																	<br>
+																{% endif %}
+															{% endfor %}
+														{% endfor %}
+													{% endif %}
+												{% endfor %}
+											{% endif %}
+										{% endfor %}
+                                    </div>
+                                </div>
+                             {% else %}
+                                <div id="tab-{{key}}" class="tab-pane ">
+                                    <div class="panel-body">
+                                          {% for sub in subarea %}
+											{% if sub.area.id == areaPrincipal.id %}
+												{% for pregunta in preguntas %}
+													{% if pregunta.subarea.id == sub.id %}
+														<h1>	{{pregunta.pregunta}}  </h1>  
+														<p>{{pregunta.descripcion}}</p>
+														<h3>{{areaPrincipal.nombre}}  > {{sub.nombre}}</h3>
+														{% for opcion in opciones %}
+															{% for k,opciontmp in opcion %}
+																{% if opciontmp.pregunta.pregunta == pregunta.pregunta %}
+																	<span>{{insiso[k]}})</span><input type="radio" name="{{opciontmp.pregunta.id}}" value="{{opciontmp.id}}" required="true">{{opciontmp.opcion}} 
+																	<br>
+																{% endif %}
+															{% endfor %}
+														{% endfor %}
+													{% endif %}
+												{% endfor %}
+											{% endif %}
+										{% endfor %}
+                                    </div>
+                                </div>                                    
+                              {% endif %}
+                             <!-- aqui dentro -->
+                            {% endfor %}
+                            </div>
+                       </div>
+                    </div>
+                </div>
+            </div>
+
 </form>
 
+
+
+
+
+
+</div>
+</div>
+</section>
+<script>
+	$('body').attr('class','pace-done nav-toggle')
+</script>
+{% endblock %}

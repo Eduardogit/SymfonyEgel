@@ -1,0 +1,33 @@
+{% extends '::baseAdmin.html.twig' %}
+{% block body %}
+{{parent()}}
+{% endblock %}
+{% block content %}
+{#{{parent()}}#}
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+        	<h1>Mis Examenes</h1>
+        	{% for test in  allTest %}
+        	  <div class="col-lg-3 col-md-7">
+            <div class="panel panel-filled">
+                <div class="panel-body">
+                    <h2 style="color:#f5a212" class="m-b-none">
+                        <a href="{{path('test_seguir',{'id':test.id})}}">
+                            Examen
+                        </a>
+                    </h2>
+                    <div class="col-md-12">
+                        <span>Estatus</span>
+                        <div class="small">{{test.estatus}}</div>                             
+                    </div>
+                    <div class="slight m-t-sm"><i class="fa fa-clock-o"> </i> Fecha inicio: <span class="c-white">{{test.fechaInicio |date('Y-m-d H:i:s')}}</span>  </div>
+                    <div class="slight m-t-sm"><i class="fa fa-clock-o"> </i> Fecha Fin: <span class="c-white">{{test.fechaFin|date('Y-m-d H:i:s')}}</span>  </div>
+                </div>
+            </div>
+        </div>
+        	{% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

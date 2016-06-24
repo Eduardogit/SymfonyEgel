@@ -122,6 +122,33 @@ class TestController extends Controller
         ));
     }
 
+
+
+    public function realizadosAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+
+        $user = $this->container->get('security.token_storage')->getToken()->getUser();
+
+        $preguntas = $em->getRepository('testBundle:Preguntas')->findAll();
+        $testUser = $em->getRepository('testBundle:Test')->findBy(array('usuario'=>$user));
+        $allTest = [];
+        foreach ($testUser as $test ) {
+            $allTest[] = $test;
+        }
+
+        return $this->render('testBundle:Test:misExamenes.html.twig', array(
+            'allTest'      => $allTest,
+        ));
+    }
+
+
+
+
+
+
+
     /**
      * Finds and displays a Test entity.
      *
@@ -143,7 +170,7 @@ class TestController extends Controller
                 'pregunta' => $pregunta->getId()));
         }
 
-        $key = ['a','b','c','d'];
+        $insiso = ['a','b','c','d'];
         $area = $em->getRepository('AreasBundle:Area')->findAll();
         $subarea = $em->getRepository('AreasBundle:SubArea')->findAll();
         return $this->render('testBundle:Test:examen.html.twig', array(
@@ -151,7 +178,7 @@ class TestController extends Controller
             'opciones'      => $opciones,
             'area'      => $area,
             'subarea'      => $subarea,
-            'key'      => $key,
+            'insiso'      => $insiso,
             'test'      => $test,
         ));
     }
@@ -239,6 +266,57 @@ class TestController extends Controller
                return $this->redirect($this->generateUrl('usuario'));
 
     }
+
+
+
+
+
+    public function keepTestAction(Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('testBundle:Test')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Test entity.');
+        }
+
+
+        echo "CONTINUAR TEST";
+        die();
+
+        //
+        //RECORRE EL REQUEST Y BUSA LA OPCION POR EL ID
+        //DEPUES INSERTA EN LA ENTIDAD DE SET DE RESPUESTAS
+        //
+    
+        $entity->setEstatus('Realizando');
+        $user = $this->container->get('security.token_storage')->getToken()->getUser();
+
+        $opciones = $this->getRequest()->request->all();
+        $cont = 0;
+        foreach ($opciones as $opcion) {
+            $cont++;
+            $setRespuestas = new SetRespuestas();
+            $entityOpcion = $em->getRepository('testBundle:Opciones')->find($opcion);
+            $setRespuestas->setTest($entity);
+            $setRespuestas->setOpcion($entityOpcion);
+            $em->persist($setRespuestas);
+            $em->flush();
+
+        }
+    
+
+
+               return $this->redirect($this->generateUrl('usuario'));
+
+    }
+
+
+
+
+
+
     /**
      * Deletes a Test entity.
      *

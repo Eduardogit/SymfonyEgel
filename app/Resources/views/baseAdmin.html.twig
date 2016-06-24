@@ -123,7 +123,9 @@
                         Test
                         <li>
                             <a href="{{path('test')}}" style="color:#337ab7">Iniciar Nuevo</a>
-                            <a href="">Mis test</a>
+                        {% if is_granted('ROLE_USER') %}
+                            <a href="{{path('test_realizados')}}">Mis test</a>
+                        {% endif %}
                         </li></li>
                         <li class="nav-category">
                              Areas
