@@ -1,0 +1,230 @@
+{% extends '::baseAdmin.html.twig' %}
+{% block body %}
+{{parent()}}
+{% endblock %}
+{% block content %}
+{#{{parent()}}#}
+
+<section class="content">
+	<h1>Panel de administración</h1>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-6">
+				<div class="panel panel-filled panel-c-accent">
+					<div class="panel-heading">
+						<div class="panel-tools">
+							<a class="panel-toggle"><i class="fa fa-chevron-up"></i></a>
+							<a class="panel-close"><i class="fa fa-times"></i></a>
+						</div>
+						Total de Examenes Iniciados
+					</div>
+					<div class="panel-body">
+						<h1>
+						{{totalExamenes}}
+						</h1>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="panel panel-filled panel-c-accent">
+					<div class="panel-heading">
+						<div class="panel-tools">
+							<a class="panel-toggle"><i class="fa fa-chevron-up"></i></a>
+							<a class="panel-close"><i class="fa fa-times"></i></a>
+						</div>
+						Total de Usuario registrados
+					</div>
+					<div class="panel-body">
+						<h1>
+					    	<a href="{{path('usuario_manage')}}" style="color:#f6a821;"> {{totalUsuarios}} </a>
+						</h1>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-12">
+                    <div class="panel">
+                        <div class="panel-heading">
+                            <div class="panel-tools">
+                                <a class="panel-toggle"><i class="fa fa-chevron-up"></i></a>
+                                <a class="panel-close"><i class="fa fa-times"></i></a>
+                            </div>
+                            Uso de la plataforma
+                        </div>
+                        <div class="panel-body">
+                            <div class="flot-chart">
+                                <div class="flot-chart-content" id="flotExample1" style="padding: 0px; position: relative;"><canvas class="flot-base" width="471" height="300" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 471px; height: 300px;"></canvas><div class="flot-text" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; font-size: smaller; color: rgb(84, 84, 84);"><div class="flot-x-axis flot-x1-axis xAxis x1Axis" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; display: block;"><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 61px; top: 284px; left: 15px; text-align: center;">0</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 61px; top: 284px; left: 86px; text-align: center;">5</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 61px; top: 284px; left: 155px; text-align: center;">10</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 61px; top: 284px; left: 227px; text-align: center;">15</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 61px; top: 284px; left: 299px; text-align: center;">20</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 61px; top: 284px; left: 371px; text-align: center;">25</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 61px; top: 284px; left: 443px; text-align: center;">30</div></div><div class="flot-y-axis flot-y1-axis yAxis y1Axis" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; display: block;"><div class="flot-tick-label tickLabel" style="position: absolute; top: 271px; left: 6px; text-align: right;">0</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 217px; left: 6px; text-align: right;">5</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 163px; left: 0px; text-align: right;">10</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 108px; left: 0px; text-align: right;">15</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 54px; left: 0px; text-align: right;">20</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 0px; left: 0px; text-align: right;">25</div></div></div><canvas class="flot-overlay" width="471" height="300" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 471px; height: 300px;"></canvas></div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+			<div class="col-md-12">
+				<div class="panel panel-filled panel-c-accent">
+					<div class="panel-heading">
+						<div class="panel-tools">
+							<a class="panel-toggle"><i class="fa fa-chevron-up"></i></a>
+							<a class="panel-close"><i class="fa fa-times"></i></a>
+						</div>
+						Areas presentes en el sistema
+					</div>
+					<div class="panel-body">
+						<ul>
+							{% for area in areas %}
+								<p style="color:#f6a821;"> {{area.nombre}} </p>
+								{% for subarea in subareas %}
+								{% if subarea.area.id == area.id %}
+									<ol>{{subarea.nombre}}</ol>
+								{% endif %}
+								{% endfor %}
+							{% endfor %}
+						</ul>
+					</div>
+				</div>
+			</div>
+			{% for perfil in perfiles %}
+			<div class="col-md-6">
+				<div class="panel panel-filled panel-c-accent">
+					<div class="panel-heading">
+						<div class="panel-tools">
+							<a class="panel-toggle"><i class="fa fa-chevron-up"></i></a>
+							<a class="panel-close"><i class="fa fa-times"></i></a>
+						</div>
+						Perfiles
+					</div>
+					<div class="panel-body">
+					<ul>
+						<p style="color:#f6a821;">{{perfil.nombre}}</p>
+					</ul>
+					</div>
+				</div>
+			</div>
+			{% endfor %}
+			
+
+
+		</div>
+	</div>
+
+</section>
+<script>
+	
+    $(document).ready(function () {
+
+        var data1 = [ [0, 3], [1, 6], [2, 8], [3, 9], [4, 12], [5, 14], [6, 15], [7, 12],
+            [8, 14], [9, 12], [10, 11], [11, 10], [12, 14], [13, 16], [14, 15], [15, 15],
+            [16, 16], [17, 12], [18, 13], [19, 15], [20, 16], [21, 18], [22, 20], [23, 23],
+            [24, 22], [25, 21], [26, 20], [27, 17], [28, 15], [29, 14], [30, 13], [31, 10]];
+
+        var chartUsersOptions = {
+            points: {
+                show: true,
+                fill: true,
+                lineWidth: 1,
+                fillColor: "#f6a821"
+            },
+            grid: {
+                borderWidth: 0
+            }
+        };
+
+        $.plot($("#flotExample1"), [data1], chartUsersOptions);
+
+
+        var chartUsersOptions = {
+            lines: {
+                show: true,
+                fill: false,
+                lineWidth: 2,
+                fillColor: "#f6a821"
+            },
+            grid: {
+                borderWidth: 0
+            }
+        };
+
+        $.plot($("#flotExample2"), [data1], chartUsersOptions);
+
+        var data2 = [
+            {
+                label: "bar",
+                data: [ [1, 12], [2, 14], [3, 18], [4, 24], [5, 28], [6, 22],[7, 20], [8, 18], [9, 17], [10, 13], [11, 15], [12, 17] ]
+            }
+        ];
+
+        var chartUsersOptions2 = {
+            bars: {
+                show: true,
+                fill: false,
+                lineWidth: 2,
+                fillColor: "#f6a821"
+            },
+            legend: {
+                show: false
+            },
+            grid: {
+                borderWidth: 0
+            }
+        };
+
+        $.plot($("#flotExample3"), data2, chartUsersOptions2);
+
+
+        var chartUsersOptions2 = {
+            lines: {
+                show: true,
+                steps: true
+            },
+            grid: {
+                borderWidth: 0
+            }
+        };
+
+        $.plot($("#flotExample4"), data2, chartUsersOptions2);
+
+        var data2 = [
+            {
+                data: [ [1, 4], [2, 5], [3, 7], [4, 4], [5, 8], [6, 9],[7, 11], [8, 10], [9, 8], [10, 5], [11, 4], [12, 3] ]
+            }
+        ];
+
+        var chartUsersOptions2 = {
+            series: {
+                splines: {
+                    show: true,
+                    tension: 0.4,
+                    lineWidth: 2,
+                    fill: false
+                },
+            },
+            legend: {
+                show: false
+            },
+            grid: {
+                borderWidth: 0
+            }
+        };
+
+        $.plot($("#flotExample5"), data2, chartUsersOptions2);
+
+        var data2 = [
+            {
+                data: [ [1, 4], [2, 5], [3, 7], [4, 4], [5, 8], [6, 9],[7, 11], [8, 10], [9, 8], [10, 5], [11, 4], [12, 3] ]
+            }
+        ];
+
+        var chartUsersOptions2 = {
+            lines: {
+                show: true,
+                fill: 0.1
+            },
+            grid: {
+                borderWidth: 0
+            }
+        };
+
+        $.plot($("#flotExample6"), data2, chartUsersOptions2);
+
+    });
+
+</script>
+{% endblock %}

@@ -30,6 +30,7 @@ class SetRespuestasController extends Controller
 
         print_r($opciones->getPregunta()->getRespuestaCorrecta());
         print_r($opciones->getPregunta()->getId());
+        print_r($opciones->getValor());
         //var_dump($s->getOpcion()->getOpcion());
 
         echo "</pre>";

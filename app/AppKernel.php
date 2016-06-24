@@ -19,6 +19,7 @@ class AppKernel extends Kernel
             new UsuarioBundle\UsuarioBundle(),
             new testBundle\testBundle(),
             new AreasBundle\AreasBundle(),
+            new WhiteOctober\TCPDFBundle\WhiteOctoberTCPDFBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

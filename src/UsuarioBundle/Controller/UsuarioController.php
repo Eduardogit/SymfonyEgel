@@ -34,19 +34,32 @@ class UsuarioController extends Controller
 
         $user = $this->container->get('security.token_storage')->getToken()->getUser();
 
-        $test = $em->getRepository('testBundle:Test')->findBy(array('usuario' =>$user));
-        //echo "<pre>";
-        //print_r($test);
-        //echo "<pre>";
-        //die();
+        if ($user->getRoles()[0] == 'ROLE_ADMIN') {
+            $areas = $em->getRepository('AreasBundle:Area')->findAll();
+            $subAreas = $em->getRepository('AreasBundle:SubArea')->findAll();
+            $perfiles = $em->getRepository('AreasBundle:Perfil')->findAll();
+            $tests = $em->getRepository('testBundle:Test')->findAll();
+            $preguntaSub = $em->getRepository('testBundle:Preguntas')->findAll();
+            $usuarios = $em->getRepository('UsuarioBundle:Usuario')->findAll();
 
-        try{
-            return $this->render('UsuarioBundle:Usuario:index.html.twig', array(
-                'test' => $test,
-            ));
-        }catch(\Doctrine\ORM\EntityNotFoundException $ex){
-            return $this->render('UsuarioBundle:Usuario:index.html.twig');
+            $usuarios = count($usuarios);
+            $tests = count($tests);
+
+
+            return $this->render('UsuarioBundle:Usuario:admin.html.twig', array(
+                'areas' =>$areas,
+                'subareas' =>$subAreas,
+                'perfiles' =>$perfiles,
+                'totalExamenes' =>$tests,
+                'totalUsuarios' =>$usuarios,
+                ));
+        }else if($user->getRoles()[0] == 'ROLE_USER'){
+            $test = $em->getRepository('testBundle:Test')->findBy(array('usuario' =>$user));
+                return $this->render('UsuarioBundle:Usuario:index.html.twig', array(
+                    'test' => $test,
+                   ));
         }
+        
     }
     /**
      * Creates a new Usuario entity.
