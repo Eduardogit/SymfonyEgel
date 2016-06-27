@@ -30,3 +30,6 @@ test_realizados:
 test_seguir:
     path:     /{id}/continuar
     defaults: { _controller: testBundle:Test:keepTest }
+test_pdf:
+    path:     /{id}/pdf
+    defaults: { _controller: testBundle:SetRespuestas:renderPdf }

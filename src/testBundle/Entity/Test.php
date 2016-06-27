@@ -192,4 +192,32 @@ class Test
 
         return $this;
     }
+    /**
+     * @var integer
+     */
+    private $calificacion;
+
+
+    /**
+     * Set calificacion
+     *
+     * @param integer $calificacion
+     * @return Test
+     */
+    public function setCalificacion($calificacion)
+    {
+        $this->calificacion = $calificacion;
+
+        return $this;
+    }
+
+    /**
+     * Get calificacion
+     *
+     * @return integer 
+     */
+    public function getCalificacion()
+    {
+        return $this->calificacion;
+    }
 }

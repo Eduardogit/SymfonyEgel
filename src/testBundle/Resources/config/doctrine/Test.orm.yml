@@ -16,6 +16,9 @@ testBundle\Entity\Test:
         estatus:
             type: string
             length: '10'
+        calificacion:
+            type: float
+            nullable: true
     manyToOne:
         areasCompletadas:
             targetEntity: AreasCompletadas

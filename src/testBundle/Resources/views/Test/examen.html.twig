@@ -38,13 +38,15 @@
 											{% if sub.area.id == areaPrincipal.id %}
 												{% for pregunta in preguntas %}
 													{% if pregunta.subarea.id == sub.id %}
-														<h1>	{{pregunta.pregunta}}  </h1>  
+														<h2>{{pregunta.pregunta}}  </h2>  
 														<p>{{pregunta.descripcion}}</p>
-														<h3>{{areaPrincipal.nombre}}  > {{sub.nombre}}</h3>
+														<h4 style="color:#4587CA">{{areaPrincipal.nombre}}  > {{sub.nombre}}</h4>
 														{% for opcion in opciones %}
-															{% for k,opciontmp in opcion %}
+															{% for k,opciontmp in opcion|reverse %}
 																{% if opciontmp.pregunta.pregunta == pregunta.pregunta %}
-																	<span>{{insiso[k]}})</span><input type="radio" name="{{opciontmp.pregunta.id}}" value="{{opciontmp.id}}" required="true">{{opciontmp.opcion}} 
+																<p>
+																	<span>{{opciontmp.valor}})</span><input type="radio" name="{{opciontmp.pregunta.id}}" value="{{opciontmp.id}}" required="true">{{opciontmp.opcion}}  
+																</p>
 																	<br>
 																{% endif %}
 															{% endfor %}
@@ -62,13 +64,15 @@
 											{% if sub.area.id == areaPrincipal.id %}
 												{% for pregunta in preguntas %}
 													{% if pregunta.subarea.id == sub.id %}
-														<h1>	{{pregunta.pregunta}}  </h1>  
+														<h2>	{{pregunta.pregunta}}  </h2>  
 														<p>{{pregunta.descripcion}}</p>
-														<h3>{{areaPrincipal.nombre}}  > {{sub.nombre}}</h3>
+														<h4 style="color:#4587CA">{{areaPrincipal.nombre}}  > {{sub.nombre}}</h4>
 														{% for opcion in opciones %}
-															{% for k,opciontmp in opcion %}
+															{% for k,opciontmp in opcion|reverse %}
 																{% if opciontmp.pregunta.pregunta == pregunta.pregunta %}
-																	<span>{{insiso[k]}})</span><input type="radio" name="{{opciontmp.pregunta.id}}" value="{{opciontmp.id}}" required="true">{{opciontmp.opcion}} 
+																	<p>
+																	<span>{{opciontmp.valor}})</span><input type="radio" name="{{opciontmp.pregunta.id}}" value="{{opciontmp.id}}" required="true"> {{opciontmp.opcion}}
+																	</p> 
 																	<br>
 																{% endif %}
 															{% endfor %}

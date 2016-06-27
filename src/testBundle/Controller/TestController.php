@@ -245,7 +245,7 @@ class TestController extends Controller
         //DEPUES INSERTA EN LA ENTIDAD DE SET DE RESPUESTAS
         //
     
-        $entity->setEstatus('Realizando');
+        $entity->setEstatus('Terminado');
         $user = $this->container->get('security.token_storage')->getToken()->getUser();
 
         $opciones = $this->getRequest()->request->all();
@@ -281,14 +281,13 @@ class TestController extends Controller
             throw $this->createNotFoundException('Unable to find Test entity.');
         }
 
-
         echo "CONTINUAR TEST";
-        die();
 
         //
         //RECORRE EL REQUEST Y BUSA LA OPCION POR EL ID
         //DEPUES INSERTA EN LA ENTIDAD DE SET DE RESPUESTAS
         //
+        die();
     
         $entity->setEstatus('Realizando');
         $user = $this->container->get('security.token_storage')->getToken()->getUser();

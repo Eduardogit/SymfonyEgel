@@ -8,13 +8,14 @@
     <div class="container-fluid">
         <div class="row">
         	<h1>Mis Examenes</h1>
-        	{% for test in  allTest %}
+        	{% for key,test in  allTest %}
+            {% if test.estatus != "Terminado"%}
         	  <div class="col-lg-3 col-md-7">
             <div class="panel panel-filled">
                 <div class="panel-body">
                     <h2 style="color:#f5a212" class="m-b-none">
                         <a href="{{path('test_seguir',{'id':test.id})}}">
-                            Examen
+                            Continuar Examen #{{key+1}}
                         </a>
                     </h2>
                     <div class="col-md-12">
@@ -26,6 +27,7 @@
                 </div>
             </div>
         </div>
+        {% endif %}
         	{% endfor %}
         </div>
     </div>

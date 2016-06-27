@@ -11,18 +11,15 @@
 
     <title>Simulador de Examen Egel</title>
     {% block topJavascripts %}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+    <script src="{{asset('public/js/jquery-final.js')}}"></script>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
         <!-- The CSS
     ================================================== -->
     {% endblock %}
     
     {% block stylesheets %}
-        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
         <link href="{{ asset('public/css/theme.css')}}" rel="stylesheet">
         <link href="{{asset('public/css/animate.min.css')}}" rel="stylesheet">
     {% endblock %}
@@ -135,9 +132,9 @@
       <div class="container wrapper-xl">
         <div class="row">
           <div class="col-xs-5 col-xs-offset-7">
-            <h4>Capacitacion</h4>
+            <h4>Capacitación</h4>
             <p class="lead">
-                  La intención de desarrollar un software de simulación del EGEL es capacitar a los estudiantes de licenciatura para que den un mejor rendimiento que posteriormente les beneficiara en su titulación y también beneficiara en el número de egresados que proyecta la academia gracias a dicho software. 
+                  La intención de desarrollar un software de simulación del EGEL es capacitar a los estudiantes de licenciatura para que den un mejor rendimiento que posteriormente les beneficiará en su titulación y también beneficiará en el número de egresados que proyecta la academia gracias a dicho software. 
             </p>
           </div>
         </div>
@@ -169,7 +166,7 @@
           <div class="row">
             <div class="col-md-12">
                 <h2>Servicios</h2>
-                <p class="lead">Ofrecemos los servicios que haran tu experiencia mas placentera con feedback, envio de correo   y otros features que podran llevar tu capacidad al maximo.
+                <p class="lead">Ofrecemos los servicios que harán tu experiencia mas placentera con feedback, envio de correo   y otros features que podran llevar tu capacidad al maximo.
                 </p>
             </div>
           </div>

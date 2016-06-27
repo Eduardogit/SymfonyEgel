@@ -3,36 +3,63 @@
 {{parent()}}
 {% endblock %}
 {% block content %}
+<link rel="stylesheet" href="{{asset('public/css/morris.css')}}">
+<script src="{{asset('public/js/raphael.js')}}"> </script>
+<script src="{{asset('public/js/morris.js')}}"> </script>
 
 <section class="content">
     <div class="container-fluid">
         <div class="row">
-    <h1>SetRespuestas</h1>
-
-    <table class="record_properties">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ entity.id }}</td>
-                <td>{{ dump(entity) }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('setrespuestas') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('setrespuestas_edit', { 'id': entity.id }) }}">
-            Edit
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+    <div class="col-md-6">
+    <h1>Respuestas del examen</h1>
+        <p>Nombre: <span style="color:#fff">{{usuario.nombre}}</span></p>
+        <p>Apellido paterno: <span style="color:#fff">{{usuario.apPaterno}}</span></p>
+        <p>Apellido materno: <span style="color:#fff">{{usuario.apMaterno}}</span></p>
+        <p>sexo: <span style="color:#fff">{{usuario.sexo}}</span></p>
+        <p>Matricula: <span style="color:#fff">{{usuario.matricula}}</span></p>
+        <p>correo: <span style="color:#fff">{{usuario.correo}}</span></p>
+        <a href="{{ path('test_pdf', { 'id': id_test }) }}"><button class="btn btn-warning"> Mostrar PDF</button></a>
+    </div >
+    <div class="col-md-6">
+        <h1>Aprovechamiento</h1>
+        <div class="col-md-12" id="graph" style="height:200px" ></div>
+    </div>
+    <div class="text-center col-md-12">
+        <h1> {{rescorrectas|number_format}} / {{total|number_format}} = <span style="color:#f6a821;"> calificacion {{(rescorrectas * 10 )/ total}} </span>
+        </h1>
+    </div>
+        {% for array in opciones %}
+        <div class="col-md-4">
+            <div class="panel panel-filled" style="height:210px">
+                <div style="color:#f6a821;" class="panel-heading">{{array.pregunta}}</div>
+                <div class="panel-body">
+                <div class="col-md-6">
+                    <p>respuesta correcta</p>
+                    <p class="text-center">{{array.correcta}}</p>
+                </div>
+                <div class="col-md-6">
+                    <p>tu respuesta</p>
+                    <p class="text-center">{{array.respuesta}}</p>
+                </div>
+                </div>
+                <div class="text-center panel-footer"><p class="text-primary">{{array.respuestaopcion}}</p></div>
+            </div>
+        </div>
+    {% endfor %}
 </div>
 </div>
 </section>
+<script>
+Morris.Donut({
+  element: 'graph',
+  data: [
+    {value: {{total|number_format}} * 100 / 16 -{{rescorrectas|number_format}}  * 100 / 16    , label: 'Incorrectas'},
+    {value: {{rescorrectas|number_format}}  * 100 / 16, label: 'Correctas'},
+  ],
+  formatter: function (x) { return x + "%"}
+}).on('click', function(i, row){
+  console.log(i, row);
+});
+    
+</script>
 {% endblock %}
