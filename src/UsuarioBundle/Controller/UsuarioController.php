@@ -164,11 +164,8 @@ class UsuarioController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('UsuarioBundle:Usuario')->find($id);
-        $user = $this->get('security.token_storage')->getToken()->getUser();
-        
-        if($user->getId() != $id){
-            return $this->redirect($this->generateUrl('usuario'));
-        }
+        $user = $this->container->get('security.token_storage')->getToken()->getUser();
+     
 
         
         if (!$entity) {

@@ -107,6 +107,8 @@ class TestController extends Controller
             'attr'  => array('class' => 'btn btn-block btn-lg btn-default btn-warning ')
         ));
 
+        $user = $this->container->get('security.token_storage')->getToken()->getUser();
+
         $em = $this->getDoctrine()->getManager();
 
         $areas = $em->getRepository('AreasBundle:Area')->findAll();

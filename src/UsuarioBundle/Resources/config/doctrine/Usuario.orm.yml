@@ -45,7 +45,7 @@ UsuarioBundle\Entity\Usuario:
         role: 
             type: string
             length: '100'
-    oneToOne:
+    manyToOne:
         perfil:
             targetEntity: AreasBundle\Entity\Perfil
             joinColumn:
